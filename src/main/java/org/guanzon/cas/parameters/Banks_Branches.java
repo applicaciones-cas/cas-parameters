@@ -6,7 +6,7 @@ import org.guanzon.appdriver.base.MiscUtil;
 import org.guanzon.appdriver.base.SQLUtil;
 import org.guanzon.appdriver.constant.EditMode;
 import org.guanzon.appdriver.iface.GRecord;
-import org.guanzon.cas.model.parameters.Model_Banks;
+import org.guanzon.cas.model.parameters.Model_Banks_Branches;
 import org.json.simple.JSONObject;
 
 public class Banks_Branches implements GRecord{
@@ -15,14 +15,14 @@ public class Banks_Branches implements GRecord{
     int pnEditMode;
     String psRecdStat;
     
-    Model_Banks poModel;
+    Model_Banks_Branches poModel;
     JSONObject poJSON;
     
     public Banks_Branches(GRider foGRider, boolean fbWthParent){
         poGRider = foGRider;
         pbWthParent = fbWthParent;
         
-        poModel = new Model_Banks(foGRider);
+        poModel = new Model_Banks_Branches(foGRider);
         pnEditMode = EditMode.UNKNOWN;
     }
     
@@ -63,7 +63,7 @@ public class Banks_Branches implements GRecord{
 
     @Override
     public JSONObject openRecord(String fsValue) {
-        return poModel.openRecord("sBankIDxx = " + SQLUtil.toSQL(fsValue));
+        return poModel.openRecord("sBrBankID = " + SQLUtil.toSQL(fsValue));
     }
 
     @Override
@@ -158,14 +158,14 @@ public class Banks_Branches implements GRecord{
                                         , lsSQL
                                         , fsValue
                                         , "Code»Name"
-                                        , "sBankCode»sBankName"
-                                        , "sBankCode»sBankName"
+                                        , "xBankName»xBankCode»xTownName"
+                                        , "xBankName»xBankCode»xTownName"
                                         , fbByCode ? 0 : 1);
     }
     
     //additional methods
     @Override
-    public Model_Banks getModel(){
+    public Model_Banks_Branches getModel(){
         return poModel;
     }
 }
