@@ -158,8 +158,8 @@ public class Color_Detail implements GRecord{
                                         , lsSQL
                                         , fsValue
                                         , "Code»Name"
-                                        , "xMnColorx"
-                                        , "xMnColorx"
+                                        , "sColorIDx»sDescript"
+                                        , "sColorIDx»sDescript"
                                         , fbByCode ? 0 : 1);
     }
     
