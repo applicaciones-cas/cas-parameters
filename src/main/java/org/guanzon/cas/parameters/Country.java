@@ -158,8 +158,8 @@ public class Country implements GRecord{
                                         , lsSQL
                                         , fsValue
                                         , "Code»Name"
-                                        , "xBankName»xBankCode»xTownName"
-                                        , "xBankName»xBankCode»xTownName"
+                                        , "sCntryCde»sCntryNme"
+                                        , "sCntryCde»sCntryNme"
                                         , fbByCode ? 0 : 1);
     }
     
