@@ -158,8 +158,8 @@ public class Size implements GRecord{
                                         , lsSQL
                                         , fsValue
                                         , "Code»Name"
-                                        , "xBankName»xBankCode»xTownName"
-                                        , "xBankName»xBankCode»xTownName"
+                                        , "sSizeIDxx»sSizeName"
+                                        , "sSizeIDxx»sSizeName"
                                         , fbByCode ? 0 : 1);
     }
     
