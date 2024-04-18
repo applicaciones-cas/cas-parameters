@@ -158,8 +158,8 @@ public class Salesman implements GRecord{
                                         , lsSQL
                                         , fsValue
                                         , "Code»Name"
-                                        , "xClientNm»xBranchNm"
-                                        , "xClientNm»xBranchNm"
+                                        , "sEmployID»sLastName"
+                                        , "sEmployID»sLastName"
                                         , fbByCode ? 0 : 1);
     }
     
