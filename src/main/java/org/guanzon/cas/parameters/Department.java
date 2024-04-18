@@ -158,8 +158,8 @@ public class Department implements GRecord{
                                         , lsSQL
                                         , fsValue
                                         , "Code»Name"
-                                        , "xDeptHead»xHAssgnNm»xSAssgnNm"
-                                        , "xDeptHead»xHAssgnNm»xSAssgnNm"
+                                        , "sDeptIDxx»sDeptName"
+                                        , "sDeptIDxx»sDeptName"
                                         , fbByCode ? 0 : 1);
     }
     
