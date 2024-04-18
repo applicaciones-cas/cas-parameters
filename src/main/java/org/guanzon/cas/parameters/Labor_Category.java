@@ -158,8 +158,8 @@ public class Labor_Category implements GRecord{
                                         , lsSQL
                                         , fsValue
                                         , "Code»Name"
-                                        , "xCategrNm"
-                                        , "xCategrNm"
+                                        , "sLaborIDx»sDescript"
+                                        , "sLaborIDx»sDescript"
                                         , fbByCode ? 0 : 1);
     }
     
