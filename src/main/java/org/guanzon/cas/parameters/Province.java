@@ -158,8 +158,8 @@ public class Province implements GRecord{
                                         , lsSQL
                                         , fsValue
                                         , "Code»Name"
-                                        , "xRegionNm"
-                                        , "xRegionNm"
+                                        , "sProvIDxx»sProvName"
+                                        , "sProvIDxx»sProvName"
                                         , fbByCode ? 0 : 1);
     }
     
