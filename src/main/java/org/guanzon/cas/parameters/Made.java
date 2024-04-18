@@ -158,8 +158,8 @@ public class Made implements GRecord{
                                         , lsSQL
                                         , fsValue
                                         , "Code»Name"
-                                        , "xBankName»xBankCode»xTownName"
-                                        , "xBankName»xBankCode»xTownName"
+                                        , "sMadeIDxx»sMadeName"
+                                        , "sMadeIDxx»sMadeName"
                                         , fbByCode ? 0 : 1);
     }
     
