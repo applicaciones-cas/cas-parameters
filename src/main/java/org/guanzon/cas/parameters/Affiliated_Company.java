@@ -158,8 +158,8 @@ public class Affiliated_Company implements GRecord{
                                         , lsSQL
                                         , fsValue
                                         , "Code»Name"
-                                        , "xBankName»xBankCode»xTownName"
-                                        , "xBankName»xBankCode»xTownName"
+                                        , "sCompnyCd»sCompnyNm"
+                                        , "sCompnyCd»sCompnyNm"
                                         , fbByCode ? 0 : 1);
     }
     
