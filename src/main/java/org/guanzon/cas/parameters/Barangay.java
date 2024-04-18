@@ -158,8 +158,8 @@ public class Barangay implements GRecord{
                                         , lsSQL
                                         , fsValue
                                         , "Code»Name"
-                                        , "xTownName"
-                                        , "xTownName"
+                                        , "sBrgyIDxx»sBrgyName"
+                                        , "sBrgyIDxx»sBrgyName"
                                         , fbByCode ? 0 : 1);
     }
     
