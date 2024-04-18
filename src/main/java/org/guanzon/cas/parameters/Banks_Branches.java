@@ -158,8 +158,8 @@ public class Banks_Branches implements GRecord{
                                         , lsSQL
                                         , fsValue
                                         , "Code»Name"
-                                        , "xBankName»xBankCode»xTownName"
-                                        , "xBankName»xBankCode»xTownName"
+                                        , "sBrBankID»sBrBankNm"
+                                        , "sBrBankID»sBrBankNm"
                                         , fbByCode ? 0 : 1);
     }
     
