@@ -158,8 +158,8 @@ public class Region implements GRecord{
                                         , lsSQL
                                         , fsValue
                                         , "Code»Name"
-                                        , "xBankName»xBankCode»xTownName"
-                                        , "xBankName»xBankCode»xTownName"
+                                        , "sRegionID»sRegionNm"
+                                        , "sRegionID»sRegionNm"
                                         , fbByCode ? 0 : 1);
     }
     
