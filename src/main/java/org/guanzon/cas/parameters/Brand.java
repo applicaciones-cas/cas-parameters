@@ -158,8 +158,8 @@ public class Brand implements GRecord{
                                         , lsSQL
                                         , fsValue
                                         , "Code»Name"
-                                        , "xCategrNm"
-                                        , "xCategrNm"
+                                        , "sBrandCde»sDescript"
+                                        , "sBrandCde»sDescript"
                                         , fbByCode ? 0 : 1);
     }
     
