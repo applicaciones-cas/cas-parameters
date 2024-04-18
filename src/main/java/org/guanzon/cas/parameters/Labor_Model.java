@@ -158,8 +158,8 @@ public class Labor_Model implements GRecord{
                                         , lsSQL
                                         , fsValue
                                         , "Code»Name"
-                                        , "xBankName»xBankCode»xTownName"
-                                        , "xBankName»xBankCode»xTownName"
+                                        , "sLaborIDx»sModelNme"
+                                        , "sLaborIDx»sModelNme"
                                         , fbByCode ? 0 : 1);
     }
     
