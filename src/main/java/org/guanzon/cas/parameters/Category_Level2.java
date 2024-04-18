@@ -158,8 +158,8 @@ public class Category_Level2 implements GRecord{
                                         , lsSQL
                                         , fsValue
                                         , "Code»Name"
-                                        , "xInvTypNm»xMainCatx"
-                                        , "xInvTypNm»xMainCatx"
+                                        , "sCategrCd»sDescript"
+                                        , "sCategrCd»sDescript"
                                         , fbByCode ? 0 : 1);
     }
     
