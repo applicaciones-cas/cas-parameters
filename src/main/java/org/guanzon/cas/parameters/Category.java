@@ -158,8 +158,8 @@ public class Category implements GRecord{
                                         , lsSQL
                                         , fsValue
                                         , "Code»Name"
-                                        , "xInvTypNm"
-                                        , "xInvTypNm"
+                                        , "sCategrCd»sDescript"
+                                        , "sCategrCd»sDescript"
                                         , fbByCode ? 0 : 1);
     }
     
