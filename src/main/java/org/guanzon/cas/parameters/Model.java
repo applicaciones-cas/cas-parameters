@@ -158,8 +158,8 @@ public class Model implements GRecord{
                                         , lsSQL
                                         , fsValue
                                         , "Code»Name"
-                                        , "xBrandNme"
-                                        , "xBrandNme"
+                                        , "sModelCde»sModelNme"
+                                        , "sModelCde»sModelNme"
                                         , fbByCode ? 0 : 1);
     }
     
