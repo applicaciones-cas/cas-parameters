@@ -158,8 +158,8 @@ public class Color implements GRecord{
                                         , lsSQL
                                         , fsValue
                                         , "Code»Name"
-                                        , "xBankName»xBankCode»xTownName"
-                                        , "xBankName»xBankCode»xTownName"
+                                        , "sColorCde»sDescript"
+                                        , "sColorCde»sDescript"
                                         , fbByCode ? 0 : 1);
     }
     
