@@ -23,11 +23,7 @@ public class testBanks {
         record = new Banks(instance, false);
     }
     
-    @AfterClass
-    public static void tearDownClass() {
-        record = null;
-        instance = null;
-    }
+   
     
     @Test
     public void testProgramFlow(){
@@ -50,5 +46,11 @@ public class testBanks {
         
         loJSON = record.saveRecord();
         if ("error".equals((String) loJSON.get("result"))) Assert.fail((String) loJSON.get("message"));
+    }
+    
+     @AfterClass
+    public static void tearDownClass() {
+        record = null;
+        instance = null;
     }
 }
