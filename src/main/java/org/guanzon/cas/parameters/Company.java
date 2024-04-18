@@ -158,8 +158,8 @@ public class Company implements GRecord{
                                         , lsSQL
                                         , fsValue
                                         , "Code»Name"
-                                        , "xBankName»xBankCode»xTownName"
-                                        , "xBankName»xBankCode»xTownName"
+                                        , "sCompnyID»sCompnyNm"
+                                        , "sCompnyID»sCompnyNm"
                                         , fbByCode ? 0 : 1);
     }
     
