@@ -158,8 +158,8 @@ public class Inv_Location implements GRecord{
                                         , lsSQL
                                         , fsValue
                                         , "Code»Name"
-                                        , "xBankName»xBankCode»xTownName"
-                                        , "xBankName»xBankCode»xTownName"
+                                        , "sLocatnCd»sDescript"
+                                        , "sLocatnCd»sDescript"
                                         , fbByCode ? 0 : 1);
     }
     
