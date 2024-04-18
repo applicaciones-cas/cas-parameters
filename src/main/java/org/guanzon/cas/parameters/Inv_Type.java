@@ -158,8 +158,8 @@ public class Inv_Type implements GRecord{
                                         , lsSQL
                                         , fsValue
                                         , "Code»Name"
-                                        , "xBankName»xBankCode»xTownName"
-                                        , "xBankName»xBankCode»xTownName"
+                                        , "sInvTypCd»sDescript"
+                                        , "sInvTypCd»sDescript"
                                         , fbByCode ? 0 : 1);
     }
     
