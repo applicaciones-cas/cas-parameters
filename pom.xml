@@ -29,27 +29,6 @@
             <artifactId>cas-model-parameters</artifactId>
             <version>${project.version}</version>
         </dependency>
-        <dependency>
-            <groupId>${project.groupId}</groupId>
-            <artifactId>appdriver-constant</artifactId>
-            <version>${project.version}</version>
-        </dependency>
-        <dependency>
-            <groupId>${project.groupId}</groupId>
-            <artifactId>appdriver-iface</artifactId>
-            <version>${project.version}</version>
-        </dependency>
-        <dependency>
-            <groupId>${project.groupId}</groupId>
-            <artifactId>appdriver-base</artifactId>
-            <version>${project.version}</version>
-        </dependency>
-        <dependency>
-            <groupId>${project.groupId}</groupId>
-            <artifactId>appdriver-agent</artifactId>
-            <version>${project.version}</version>
-        </dependency>
-        
         <!-- https://mvnrepository.com/artifact/junit/junit -->
         <dependency>
             <groupId>junit</groupId>
@@ -57,7 +36,11 @@
             <version>4.12</version>
             <scope>test</scope>
         </dependency>
-
+        <dependency>
+            <groupId>${project.groupId}</groupId>
+            <artifactId>appdriver-agent</artifactId>
+            <version>${project.version}</version>
+        </dependency>
     </dependencies>
     <distributionManagement>
         <repository>

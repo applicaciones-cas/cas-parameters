@@ -158,8 +158,8 @@ public class Banks implements GRecord{
                                         , lsSQL
                                         , fsValue
                                         , "Code»Name"
-                                        , "sBankCode»sBankName"
-                                        , "sBankCode»sBankName"
+                                        , "sBankIDxx»sBankName"
+                                        , "sBankIDxx»sBankName"
                                         , fbByCode ? 0 : 1);
     }
     

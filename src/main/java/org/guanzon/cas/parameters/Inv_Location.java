@@ -6,23 +6,23 @@ import org.guanzon.appdriver.base.MiscUtil;
 import org.guanzon.appdriver.base.SQLUtil;
 import org.guanzon.appdriver.constant.EditMode;
 import org.guanzon.appdriver.iface.GRecord;
-import org.guanzon.cas.model.parameters.Model_Banks_Branches;
+import org.guanzon.cas.model.parameters.Model_Inv_Location;
 import org.json.simple.JSONObject;
 
-public class Banks_Branches implements GRecord{
+public class Inv_Location implements GRecord{
     GRider poGRider;
     boolean pbWthParent;
     int pnEditMode;
     String psRecdStat;
     
-    Model_Banks_Branches poModel;
+    Model_Inv_Location poModel;
     JSONObject poJSON;
     
-    public Banks_Branches(GRider foGRider, boolean fbWthParent){
+    public Inv_Location(GRider foGRider, boolean fbWthParent){
         poGRider = foGRider;
         pbWthParent = fbWthParent;
         
-        poModel = new Model_Banks_Branches(foGRider);
+        poModel = new Model_Inv_Location(foGRider);
         pnEditMode = EditMode.UNKNOWN;
     }
     
@@ -63,7 +63,7 @@ public class Banks_Branches implements GRecord{
 
     @Override
     public JSONObject openRecord(String fsValue) {
-        return poModel.openRecord("sBrBankID = " + SQLUtil.toSQL(fsValue));
+        return poModel.openRecord("sLocatnCd = " + SQLUtil.toSQL(fsValue));
     }
 
     @Override
@@ -158,14 +158,14 @@ public class Banks_Branches implements GRecord{
                                         , lsSQL
                                         , fsValue
                                         , "Code»Name"
-                                        , "sBrBankID»sBrBankNm"
-                                        , "sBrBankID»sBrBankNm"
+                                        , "sLocatnCd»sDescript"
+                                        , "sLocatnCd»sDescript"
                                         , fbByCode ? 0 : 1);
     }
     
     //additional methods
     @Override
-    public Model_Banks_Branches getModel(){
+    public Model_Inv_Location getModel(){
         return poModel;
     }
 }
