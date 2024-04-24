@@ -33,11 +33,6 @@ public class testCategory {
             Assert.fail((String) loJSON.get("message"));
         }
 
-        loJSON = record.getModel().setCategrCd("1");
-        if ("error".equals((String) loJSON.get("result"))) {
-            Assert.fail((String) loJSON.get("message"));
-        }
-
         loJSON = record.getModel().setDescript("BPI");
         if ("error".equals((String) loJSON.get("result"))) {
             Assert.fail((String) loJSON.get("message"));

@@ -1,6 +1,7 @@
 
 import org.guanzon.appdriver.base.GRider;
 import org.guanzon.appdriver.base.MiscUtil;
+import org.guanzon.appdriver.base.SQLUtil;
 import org.guanzon.cas.parameters.Affiliated_Company;
 import org.json.simple.JSONObject;
 import org.junit.AfterClass;
@@ -34,6 +35,11 @@ public class testAffiliated_Company {
         }
 
         loJSON = record.getModel().setCompnyCd("US");
+        if ("error".equals((String) loJSON.get("result"))) {
+            Assert.fail((String) loJSON.get("message"));
+        }
+        
+        loJSON = record.getModel().setAffiliat(SQLUtil.toDate("2024-04-24", SQLUtil.FORMAT_SHORT_DATE));
         if ("error".equals((String) loJSON.get("result"))) {
             Assert.fail((String) loJSON.get("message"));
         }

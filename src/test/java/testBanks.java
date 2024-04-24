@@ -32,10 +32,10 @@ public class testBanks {
         loJSON = record.newRecord();
         if ("error".equals((String) loJSON.get("result"))) Assert.fail((String) loJSON.get("message"));
         
-        loJSON = record.getModel().setBankName("Mark Manaois Bank Of The Philippine");
+        loJSON = record.getModel().setBankName("Mark Manaois Bank");
         if ("error".equals((String) loJSON.get("result"))) Assert.fail((String) loJSON.get("message"));
         
-        loJSON = record.getModel().setBankCode("MMBP");
+        loJSON = record.getModel().setBankCode("MMB");
         if ("error".equals((String) loJSON.get("result"))) Assert.fail((String) loJSON.get("message"));
         
         loJSON = record.getModel().setModifiedBy(instance.getUserID());

@@ -31,10 +31,7 @@ public class testDepartment {
         
         loJSON = record.newRecord();
         if ("error".equals((String) loJSON.get("result"))) Assert.fail((String) loJSON.get("message"));     
-           
-        loJSON = record.getModel().setDeptIDxx("345");
-        if ("error".equals((String) loJSON.get("result"))) Assert.fail((String) loJSON.get("message"));
-        
+
         loJSON = record.getModel().setDeptName("Mark");
         if ("error".equals((String) loJSON.get("result"))) Assert.fail((String) loJSON.get("message"));
         

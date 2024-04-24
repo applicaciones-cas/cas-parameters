@@ -32,9 +32,6 @@ public class testProvince {
         loJSON = record.newRecord();
         if ("error".equals((String) loJSON.get("result"))) Assert.fail((String) loJSON.get("message"));
         
-        loJSON = record.getModel().setProvIDxx("124");
-        if ("error".equals((String) loJSON.get("result"))) Assert.fail((String) loJSON.get("message"));
-        
         loJSON = record.getModel().setProvName("Samar");
         if ("error".equals((String) loJSON.get("result"))) Assert.fail((String) loJSON.get("message"));
         

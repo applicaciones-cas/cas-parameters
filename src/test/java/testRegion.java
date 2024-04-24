@@ -31,10 +31,7 @@ public class testRegion {
         
         loJSON = record.newRecord();
         if ("error".equals((String) loJSON.get("result"))) Assert.fail((String) loJSON.get("message"));
-        
-        loJSON = record.getModel().setRegionID("10");
-        if ("error".equals((String) loJSON.get("result"))) Assert.fail((String) loJSON.get("message"));
-        
+
         loJSON = record.getModel().setRegionNm("HELLO");
         if ("error".equals((String) loJSON.get("result"))) Assert.fail((String) loJSON.get("message"));
         

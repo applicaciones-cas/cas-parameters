@@ -1,26 +1,26 @@
-C:\Users\user\Documents\GitHub\cas-parameters\src\main\java\org\guanzon\cas\parameters\Labor_Model.java
-C:\Users\user\Documents\GitHub\cas-parameters\src\main\java\org\guanzon\cas\parameters\Salesman.java
-C:\Users\user\Documents\GitHub\cas-parameters\src\main\java\org\guanzon\cas\parameters\Category.java
-C:\Users\user\Documents\GitHub\cas-parameters\src\main\java\org\guanzon\cas\parameters\Banks.java
-C:\Users\user\Documents\GitHub\cas-parameters\src\main\java\org\guanzon\cas\parameters\Category_Level4.java
-C:\Users\user\Documents\GitHub\cas-parameters\src\main\java\org\guanzon\cas\parameters\Brand.java
-C:\Users\user\Documents\GitHub\cas-parameters\src\main\java\org\guanzon\cas\parameters\Category_Level2.java
-C:\Users\user\Documents\GitHub\cas-parameters\src\main\java\org\guanzon\cas\parameters\Banks_Branches.java
-C:\Users\user\Documents\GitHub\cas-parameters\src\main\java\org\guanzon\cas\parameters\Labor.java
-C:\Users\user\Documents\GitHub\cas-parameters\src\main\java\org\guanzon\cas\parameters\Relationship.java
-C:\Users\user\Documents\GitHub\cas-parameters\src\main\java\org\guanzon\cas\parameters\Model.java
-C:\Users\user\Documents\GitHub\cas-parameters\src\main\java\org\guanzon\cas\parameters\Country.java
-C:\Users\user\Documents\GitHub\cas-parameters\src\main\java\org\guanzon\cas\parameters\Color_Detail.java
-C:\Users\user\Documents\GitHub\cas-parameters\src\main\java\org\guanzon\cas\parameters\Region.java
-C:\Users\user\Documents\GitHub\cas-parameters\src\main\java\org\guanzon\cas\parameters\Labor_Category.java
-C:\Users\user\Documents\GitHub\cas-parameters\src\main\java\org\guanzon\cas\parameters\Province.java
-C:\Users\user\Documents\GitHub\cas-parameters\src\main\java\org\guanzon\cas\parameters\Barangay.java
-C:\Users\user\Documents\GitHub\cas-parameters\src\main\java\org\guanzon\cas\parameters\Department.java
-C:\Users\user\Documents\GitHub\cas-parameters\src\main\java\org\guanzon\cas\parameters\Color.java
-C:\Users\user\Documents\GitHub\cas-parameters\src\main\java\org\guanzon\cas\parameters\Size.java
-C:\Users\user\Documents\GitHub\cas-parameters\src\main\java\org\guanzon\cas\parameters\Inv_Type.java
-C:\Users\user\Documents\GitHub\cas-parameters\src\main\java\org\guanzon\cas\parameters\Made.java
-C:\Users\user\Documents\GitHub\cas-parameters\src\main\java\org\guanzon\cas\parameters\Company.java
-C:\Users\user\Documents\GitHub\cas-parameters\src\main\java\org\guanzon\cas\parameters\Affiliated_Company.java
-C:\Users\user\Documents\GitHub\cas-parameters\src\main\java\org\guanzon\cas\parameters\Category_Level3.java
-C:\Users\user\Documents\GitHub\cas-parameters\src\main\java\org\guanzon\cas\parameters\Inv_Location.java
+D:\Guanzon\GMC SEG Folder - Maven\cas-parameters\src\main\java\org\guanzon\cas\parameters\Brand.java
+D:\Guanzon\GMC SEG Folder - Maven\cas-parameters\src\main\java\org\guanzon\cas\parameters\Made.java
+D:\Guanzon\GMC SEG Folder - Maven\cas-parameters\src\main\java\org\guanzon\cas\parameters\Category_Level3.java
+D:\Guanzon\GMC SEG Folder - Maven\cas-parameters\src\main\java\org\guanzon\cas\parameters\Labor.java
+D:\Guanzon\GMC SEG Folder - Maven\cas-parameters\src\main\java\org\guanzon\cas\parameters\Color_Detail.java
+D:\Guanzon\GMC SEG Folder - Maven\cas-parameters\src\main\java\org\guanzon\cas\parameters\Banks_Branches.java
+D:\Guanzon\GMC SEG Folder - Maven\cas-parameters\src\main\java\org\guanzon\cas\parameters\Banks.java
+D:\Guanzon\GMC SEG Folder - Maven\cas-parameters\src\main\java\org\guanzon\cas\parameters\Category_Level2.java
+D:\Guanzon\GMC SEG Folder - Maven\cas-parameters\src\main\java\org\guanzon\cas\parameters\Model.java
+D:\Guanzon\GMC SEG Folder - Maven\cas-parameters\src\main\java\org\guanzon\cas\parameters\Province.java
+D:\Guanzon\GMC SEG Folder - Maven\cas-parameters\src\main\java\org\guanzon\cas\parameters\Inv_Type.java
+D:\Guanzon\GMC SEG Folder - Maven\cas-parameters\src\main\java\org\guanzon\cas\parameters\Category.java
+D:\Guanzon\GMC SEG Folder - Maven\cas-parameters\src\main\java\org\guanzon\cas\parameters\Category_Level4.java
+D:\Guanzon\GMC SEG Folder - Maven\cas-parameters\src\main\java\org\guanzon\cas\parameters\Labor_Model.java
+D:\Guanzon\GMC SEG Folder - Maven\cas-parameters\src\main\java\org\guanzon\cas\parameters\Affiliated_Company.java
+D:\Guanzon\GMC SEG Folder - Maven\cas-parameters\src\main\java\org\guanzon\cas\parameters\Size.java
+D:\Guanzon\GMC SEG Folder - Maven\cas-parameters\src\main\java\org\guanzon\cas\parameters\Company.java
+D:\Guanzon\GMC SEG Folder - Maven\cas-parameters\src\main\java\org\guanzon\cas\parameters\Inv_Location.java
+D:\Guanzon\GMC SEG Folder - Maven\cas-parameters\src\main\java\org\guanzon\cas\parameters\Color.java
+D:\Guanzon\GMC SEG Folder - Maven\cas-parameters\src\main\java\org\guanzon\cas\parameters\Country.java
+D:\Guanzon\GMC SEG Folder - Maven\cas-parameters\src\main\java\org\guanzon\cas\parameters\Labor_Category.java
+D:\Guanzon\GMC SEG Folder - Maven\cas-parameters\src\main\java\org\guanzon\cas\parameters\Relationship.java
+D:\Guanzon\GMC SEG Folder - Maven\cas-parameters\src\main\java\org\guanzon\cas\parameters\Department.java
+D:\Guanzon\GMC SEG Folder - Maven\cas-parameters\src\main\java\org\guanzon\cas\parameters\Barangay.java
+D:\Guanzon\GMC SEG Folder - Maven\cas-parameters\src\main\java\org\guanzon\cas\parameters\Region.java
+D:\Guanzon\GMC SEG Folder - Maven\cas-parameters\src\main\java\org\guanzon\cas\parameters\Salesman.java
