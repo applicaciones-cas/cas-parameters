@@ -32,13 +32,13 @@ public class testLabor_Model {
         loJSON = record.newRecord();
         if ("error".equals((String) loJSON.get("result"))) Assert.fail((String) loJSON.get("message"));
         
-        loJSON = record.getModel().setLaborIDx("Hello");
+        loJSON = record.getModel().setLaborID("Hello");
         if ("error".equals((String) loJSON.get("result"))) Assert.fail((String) loJSON.get("message"));
         
-        loJSON = record.getModel().setModelIDx("Mark");
+        loJSON = record.getModel().setModelID("Mark");
         if ("error".equals((String) loJSON.get("result"))) Assert.fail((String) loJSON.get("message"));
         
-        loJSON = record.getModel().setAmountxx(24234.45);
+        loJSON = record.getModel().setAmount(24234.45);
         if ("error".equals((String) loJSON.get("result"))) Assert.fail((String) loJSON.get("message"));
         
         loJSON = record.getModel().setModifiedBy(instance.getUserID());

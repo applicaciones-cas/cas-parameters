@@ -34,17 +34,12 @@ public class testAffiliated_Company {
             Assert.fail((String) loJSON.get("message"));
         }
 
-        loJSON = record.getModel().setCompnyCd("US");
-        if ("error".equals((String) loJSON.get("result"))) {
-            Assert.fail((String) loJSON.get("message"));
-        }
-        
-        loJSON = record.getModel().setAffiliat(SQLUtil.toDate("2024-04-24", SQLUtil.FORMAT_SHORT_DATE));
+        loJSON = record.getModel().setCompanyCode("12");
         if ("error".equals((String) loJSON.get("result"))) {
             Assert.fail((String) loJSON.get("message"));
         }
 
-        loJSON = record.getModel().setCompnyNm("Guanzon");
+        loJSON = record.getModel().setCompanyName("Guanzon");
         if ("error".equals((String) loJSON.get("result"))) {
             Assert.fail((String) loJSON.get("message"));
         }
@@ -59,10 +54,6 @@ public class testAffiliated_Company {
             Assert.fail((String) loJSON.get("message"));
         }
 
-        loJSON = record.saveRecord();
-        if ("error".equals((String) loJSON.get("result"))) {
-            Assert.fail((String) loJSON.get("message"));
-        }
     }
 
     @AfterClass

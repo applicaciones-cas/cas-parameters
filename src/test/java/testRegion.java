@@ -31,20 +31,23 @@ public class testRegion {
         
         loJSON = record.newRecord();
         if ("error".equals((String) loJSON.get("result"))) Assert.fail((String) loJSON.get("message"));
-
-        loJSON = record.getModel().setRegionNm("HELLO");
+        
+        loJSON = record.getModel().setRegionID("10");
         if ("error".equals((String) loJSON.get("result"))) Assert.fail((String) loJSON.get("message"));
         
-        loJSON = record.getModel().setMinWages(23457.0);
+        loJSON = record.getModel().setRegionName("HELLO");
         if ("error".equals((String) loJSON.get("result"))) Assert.fail((String) loJSON.get("message"));
         
-        loJSON = record.getModel().setColaAmtx(23567.34);
+        loJSON = record.getModel().setMinimumWages(23457.0);
         if ("error".equals((String) loJSON.get("result"))) Assert.fail((String) loJSON.get("message"));
         
-        loJSON = record.getModel().setMinWage2(23522.0);
+        loJSON = record.getModel().setColaAmount(23567.34);
         if ("error".equals((String) loJSON.get("result"))) Assert.fail((String) loJSON.get("message"));
         
-        loJSON = record.getModel().setColaAmt2(23435.35);
+        loJSON = record.getModel().setMinimumWage2(23522.0);
+        if ("error".equals((String) loJSON.get("result"))) Assert.fail((String) loJSON.get("message"));
+        
+        loJSON = record.getModel().setColaAmount2(23435.35);
         if ("error".equals((String) loJSON.get("result"))) Assert.fail((String) loJSON.get("message"));
         
         loJSON = record.getModel().setModifiedBy(instance.getUserID());
