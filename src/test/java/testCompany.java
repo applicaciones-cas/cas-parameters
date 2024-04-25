@@ -1,4 +1,3 @@
-
 import org.guanzon.appdriver.base.GRider;
 import org.guanzon.appdriver.base.MiscUtil;
 import org.guanzon.cas.parameters.Company;
@@ -33,12 +32,17 @@ public class testCompany {
             Assert.fail((String) loJSON.get("message"));
         }
 
-        loJSON = record.getModel().setCompnyNm("US");
+        loJSON = record.getModel() .setCompanyName("US");
         if ("error".equals((String) loJSON.get("result"))) {
             Assert.fail((String) loJSON.get("message"));
         }
 
-        loJSON = record.getModel().setCompnyCd("33");
+        loJSON = record.getModel().setCompanyCode("33");
+        if ("error".equals((String) loJSON.get("result"))) {
+            Assert.fail((String) loJSON.get("message"));
+        }
+        
+        loJSON = record.getModel().setEmployerNumber("33");
         if ("error".equals((String) loJSON.get("result"))) {
             Assert.fail((String) loJSON.get("message"));
         }
