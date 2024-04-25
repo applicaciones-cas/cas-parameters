@@ -33,12 +33,22 @@ public class testCategory_Level2 {
             Assert.fail((String) loJSON.get("message"));
         }
 
-        loJSON = record.getModel().setDescript("BPI");
+        loJSON = record.getModel().setCategoryCode("BPI");
         if ("error".equals((String) loJSON.get("result"))) {
             Assert.fail((String) loJSON.get("message"));
         }
 
-        loJSON = record.getModel().setInvTypCd("BPI");
+        loJSON = record.getModel().setDescription("BPI");
+        if ("error".equals((String) loJSON.get("result"))) {
+            Assert.fail((String) loJSON.get("message"));
+        }
+        
+        loJSON = record.getModel() .setInvenTorypCode("BPI");
+        if ("error".equals((String) loJSON.get("result"))) {
+            Assert.fail((String) loJSON.get("message"));
+        }
+        
+         loJSON = record.getModel() .setMainCategory("BPI");
         if ("error".equals((String) loJSON.get("result"))) {
             Assert.fail((String) loJSON.get("message"));
         }
