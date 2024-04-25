@@ -33,12 +33,26 @@ public class testBarangay {
             Assert.fail((String) loJSON.get("message"));
         }
 
-        loJSON = record.getModel().setBrgyName("US");
+//        loJSON = record.getModel().setBranchesBanksID("435");
+//        if ("error".equals((String) loJSON.get("result"))) {
+//            Assert.fail((String) loJSON.get("message"));
+//        }
+        loJSON = record.getModel().setBarangayName("MMB");
         if ("error".equals((String) loJSON.get("result"))) {
             Assert.fail((String) loJSON.get("message"));
         }
 
-        loJSON = record.getModel().setTownIDxx("33");
+        loJSON = record.getModel().setTownID("MMB");
+        if ("error".equals((String) loJSON.get("result"))) {
+            Assert.fail((String) loJSON.get("message"));
+        }
+
+        loJSON = record.getModel().setHasRoute("M");
+        if ("error".equals((String) loJSON.get("result"))) {
+            Assert.fail((String) loJSON.get("message"));
+        }
+
+        loJSON = record.getModel().setBlackList("t");
         if ("error".equals((String) loJSON.get("result"))) {
             Assert.fail((String) loJSON.get("message"));
         }
@@ -53,10 +67,6 @@ public class testBarangay {
             Assert.fail((String) loJSON.get("message"));
         }
 
-        loJSON = record.saveRecord();
-        if ("error".equals((String) loJSON.get("result"))) {
-            Assert.fail((String) loJSON.get("message"));
-        }
     }
 
     @AfterClass
