@@ -31,26 +31,29 @@ public class testDepartment {
         
         loJSON = record.newRecord();
         if ("error".equals((String) loJSON.get("result"))) Assert.fail((String) loJSON.get("message"));     
-
-        loJSON = record.getModel().setDeptName("Mark");
+           
+        loJSON = record.getModel().setDepartmentID("345");
         if ("error".equals((String) loJSON.get("result"))) Assert.fail((String) loJSON.get("message"));
         
-        loJSON = record.getModel().setDeptHead(" Manaois");
+        loJSON = record.getModel().setDepartmentName("Mark");
         if ("error".equals((String) loJSON.get("result"))) Assert.fail((String) loJSON.get("message"));
         
-        loJSON = record.getModel().setMobileNo("09432778361");
+        loJSON = record.getModel().setDepartmentHead(" Manaois");
         if ("error".equals((String) loJSON.get("result"))) Assert.fail((String) loJSON.get("message"));
         
-        loJSON = record.getModel().setEMailAdd("MarkManaoisHelloWorld");
+        loJSON = record.getModel().setMobileNumber("09432778361");
         if ("error".equals((String) loJSON.get("result"))) Assert.fail((String) loJSON.get("message"));
         
-        loJSON = record.getModel().setDeptCode("1345");
+        loJSON = record.getModel().setEmailAddress("MarkManaoisHelloWorld");
         if ("error".equals((String) loJSON.get("result"))) Assert.fail((String) loJSON.get("message"));
         
-        loJSON = record.getModel().setHAssgnID("12345");
+        loJSON = record.getModel().setDepartmentCode("1345");
         if ("error".equals((String) loJSON.get("result"))) Assert.fail((String) loJSON.get("message"));
         
-        loJSON = record.getModel().setSAssgnID("215");
+        loJSON = record.getModel().setHeadAssignID("12345");
+        if ("error".equals((String) loJSON.get("result"))) Assert.fail((String) loJSON.get("message"));
+        
+        loJSON = record.getModel().setSupervisorAssignID("215");
         if ("error".equals((String) loJSON.get("result"))) Assert.fail((String) loJSON.get("message"));
         
         loJSON = record.getModel().setModifiedBy(instance.getUserID());
