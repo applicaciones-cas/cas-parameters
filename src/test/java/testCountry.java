@@ -31,7 +31,10 @@ public class testCountry {
         loJSON = record.newRecord();
         if ("error".equals((String) loJSON.get("result"))) Assert.fail((String) loJSON.get("message"));
         
-        loJSON = record.getModel().setCntryNme("US");
+        loJSON = record.getModel().setCountryCode("Ph");
+        if ("error".equals((String) loJSON.get("result"))) Assert.fail((String) loJSON.get("message"));
+        
+        loJSON = record.getModel().setCounntryName("Philippines");
         if ("error".equals((String) loJSON.get("result"))) Assert.fail((String) loJSON.get("message"));
         
         loJSON = record.getModel().setNational("Filipino");
