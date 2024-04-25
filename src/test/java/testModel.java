@@ -32,22 +32,22 @@ public class testModel {
         loJSON = record.newRecord();
         if ("error".equals((String) loJSON.get("result"))) Assert.fail((String) loJSON.get("message"));
         
-        loJSON = record.getModel().setCategrCd("145109");
+        loJSON = record.getModel().setCategoryCode("145109");
         if ("error".equals((String) loJSON.get("result"))) Assert.fail((String) loJSON.get("message"));
         
-        loJSON = record.getModel().setModelNme("SystemConfig");
+        loJSON = record.getModel().setModelName("SystemConfig");
         if ("error".equals((String) loJSON.get("result"))) Assert.fail((String) loJSON.get("message"));
         
-        loJSON = record.getModel().setDescript("HelloWorld");
+        loJSON = record.getModel().setDescription("HelloWorld");
         if ("error".equals((String) loJSON.get("result"))) Assert.fail((String) loJSON.get("message"));
         
-        loJSON = record.getModel().setBriefDsc("MarkPogi");
+        loJSON = record.getModel().setBriefDescription("MarkPogi");
         if ("error".equals((String) loJSON.get("result"))) Assert.fail((String) loJSON.get("message"));
         
-        loJSON = record.getModel().setBrandCde("43742");
+        loJSON = record.getModel().setBrandCode("43742");
         if ("error".equals((String) loJSON.get("result"))) Assert.fail((String) loJSON.get("message"));
         
-        loJSON = record.getModel().setEndOfLfe("1");
+        loJSON = record.getModel().setEndOfLife("1");
         if ("error".equals((String) loJSON.get("result"))) Assert.fail((String) loJSON.get("message"));
         
         loJSON = record.getModel().setModifiedBy(instance.getUserID());
