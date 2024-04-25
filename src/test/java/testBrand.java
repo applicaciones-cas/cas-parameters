@@ -28,17 +28,22 @@ public class testBrand {
     public void testProgramFlow() {
         JSONObject loJSON;
 
-        loJSON = record.newRecord();
+         loJSON = record.newRecord();
         if ("error".equals((String) loJSON.get("result"))) {
             Assert.fail((String) loJSON.get("message"));
         }
 
-        loJSON = record.getModel().setDescript("US");
+        loJSON = record.getModel() .setBrandCode("M4");
         if ("error".equals((String) loJSON.get("result"))) {
             Assert.fail((String) loJSON.get("message"));
         }
 
-        loJSON = record.getModel().setCategrCd("33");
+        loJSON = record.getModel() .setDescription("MMB");
+        if ("error".equals((String) loJSON.get("result"))) {
+            Assert.fail((String) loJSON.get("message"));
+        }
+        
+        loJSON = record.getModel() .setCategoryCode("3");
         if ("error".equals((String) loJSON.get("result"))) {
             Assert.fail((String) loJSON.get("message"));
         }
@@ -49,6 +54,11 @@ public class testBrand {
         }
 
         loJSON = record.getModel().setModifiedDate(instance.getServerDate());
+        if ("error".equals((String) loJSON.get("result"))) {
+            Assert.fail((String) loJSON.get("message"));
+        }
+
+        loJSON = record.saveRecord();
         if ("error".equals((String) loJSON.get("result"))) {
             Assert.fail((String) loJSON.get("message"));
         }
