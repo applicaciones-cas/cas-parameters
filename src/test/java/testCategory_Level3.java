@@ -33,17 +33,17 @@ public class testCategory_Level3 {
             Assert.fail((String) loJSON.get("message"));
         }
 
-        loJSON = record.getModel().setCategrCd("1");
+        loJSON = record.getModel() .setCategoryCode("1");
         if ("error".equals((String) loJSON.get("result"))) {
             Assert.fail((String) loJSON.get("message"));
         }
 
-        loJSON = record.getModel().setDescript("BPI");
+        loJSON = record.getModel().setDescription("BPI");
         if ("error".equals((String) loJSON.get("result"))) {
             Assert.fail((String) loJSON.get("message"));
         }
 
-        loJSON = record.getModel().setMainCatx("B");
+        loJSON = record.getModel() .setMainCategory("B");
         if ("error".equals((String) loJSON.get("result"))) {
             Assert.fail((String) loJSON.get("message"));
         }
