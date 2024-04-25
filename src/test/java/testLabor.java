@@ -32,25 +32,25 @@ public class testLabor {
         loJSON = record.newRecord();
         if ("error".equals((String) loJSON.get("result"))) Assert.fail((String) loJSON.get("message"));
         
-        loJSON = record.getModel().setLaborIDx("1257");
+        loJSON = record.getModel().setLaborID("1257");
         if ("error".equals((String) loJSON.get("result"))) Assert.fail((String) loJSON.get("message"));
         
-        loJSON = record.getModel().setLaborNme("Mark Manaois");
+        loJSON = record.getModel().setLaborName("Mark Manaois");
         if ("error".equals((String) loJSON.get("result"))) Assert.fail((String) loJSON.get("message"));
         
-        loJSON = record.getModel().setPriceLv1(21345.65);
+        loJSON = record.getModel().setPriceLevel1(21345.65);
         if ("error".equals((String) loJSON.get("result"))) Assert.fail((String) loJSON.get("message"));
         
-        loJSON = record.getModel().setPriceLv2(67894.23);
+        loJSON = record.getModel().setPriceLevel2(67894.23);
         if ("error".equals((String) loJSON.get("result"))) Assert.fail((String) loJSON.get("message"));
         
-        loJSON = record.getModel().setPriceLv3(12347.58);
+        loJSON = record.getModel().setPriceLevel3(12347.58);
         if ("error".equals((String) loJSON.get("result"))) Assert.fail((String) loJSON.get("message"));
         
-        loJSON = record.getModel().setInHousex("A");
+        loJSON = record.getModel().setInHouse("A");
         if ("error".equals((String) loJSON.get("result"))) Assert.fail((String) loJSON.get("message"));
         
-        loJSON = record.getModel().setLaborTyp("B");
+        loJSON = record.getModel().setLaborType("B");
         if ("error".equals((String) loJSON.get("result"))) Assert.fail((String) loJSON.get("message"));
         
         loJSON = record.getModel().setModifiedBy(instance.getUserID());
