@@ -32,10 +32,10 @@ public class testInv_Type {
         loJSON = record.newRecord();
         if ("error".equals((String) loJSON.get("result"))) Assert.fail((String) loJSON.get("message"));
         
-        loJSON = record.getModel().setInvTypCd("1235");
+        loJSON = record.getModel().setInventoryTypeCode("2456");
         if ("error".equals((String) loJSON.get("result"))) Assert.fail((String) loJSON.get("message"));
         
-        loJSON = record.getModel().setDescript("HelloMark");
+        loJSON = record.getModel().setDescription("HelloMark");
         if ("error".equals((String) loJSON.get("result"))) Assert.fail((String) loJSON.get("message"));
         
         loJSON = record.getModel().setModifiedBy(instance.getUserID());

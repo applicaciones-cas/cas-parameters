@@ -32,10 +32,10 @@ public class testInv_Location {
         loJSON = record.newRecord();
         if ("error".equals((String) loJSON.get("result"))) Assert.fail((String) loJSON.get("message"));
         
-        loJSON = record.getModel().setDescript("Shangri-La Franter");
+        loJSON = record.getModel().setDescription("Shangri-La Franter");
         if ("error".equals((String) loJSON.get("result"))) Assert.fail((String) loJSON.get("message"));
         
-        loJSON = record.getModel().setBriefDsc("Active,Fantasy");
+        loJSON = record.getModel().setBriefDescription("Active,Fantasy");
         if ("error".equals((String) loJSON.get("result"))) Assert.fail((String) loJSON.get("message"));
         
         loJSON = record.getModel().setModifiedBy(instance.getUserID());

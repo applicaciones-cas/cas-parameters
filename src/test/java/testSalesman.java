@@ -32,16 +32,16 @@ public class testSalesman {
         loJSON = record.newRecord();
         if ("error".equals((String) loJSON.get("result"))) Assert.fail((String) loJSON.get("message"));
         
-        loJSON = record.getModel().setBranchCd("2024");
+        loJSON = record.getModel().setBranchCode("2024");
         if ("error".equals((String) loJSON.get("result"))) Assert.fail((String) loJSON.get("message"));
         
         loJSON = record.getModel().setLastName("Fernandz");
         if ("error".equals((String) loJSON.get("result"))) Assert.fail((String) loJSON.get("message"));
         
-        loJSON = record.getModel().setFrstName("Mark");
+        loJSON = record.getModel().setFristName("Mark");
         if ("error".equals((String) loJSON.get("result"))) Assert.fail((String) loJSON.get("message"));
         
-        loJSON = record.getModel().setMiddName("Luis");
+        loJSON = record.getModel().setMiddleName("Luis");
         if ("error".equals((String) loJSON.get("result"))) Assert.fail((String) loJSON.get("message"));
         
         loJSON = record.getModel().setModifiedBy(instance.getUserID());

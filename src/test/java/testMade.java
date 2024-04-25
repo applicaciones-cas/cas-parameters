@@ -32,7 +32,7 @@ public class testMade {
         loJSON = record.newRecord();
         if ("error".equals((String) loJSON.get("result"))) Assert.fail((String) loJSON.get("message"));
         
-        loJSON = record.getModel().setMadeIDxx("34513");
+        loJSON = record.getModel().setMadeID("34513");
         if ("error".equals((String) loJSON.get("result"))) Assert.fail((String) loJSON.get("message"));
         
         loJSON = record.getModel().setMadeName("Rimuru");
