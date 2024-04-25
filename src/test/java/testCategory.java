@@ -33,12 +33,22 @@ public class testCategory {
             Assert.fail((String) loJSON.get("message"));
         }
 
-        loJSON = record.getModel().setDescript("BPI");
+        loJSON = record.getModel().setCategoryCode("Mr");
         if ("error".equals((String) loJSON.get("result"))) {
             Assert.fail((String) loJSON.get("message"));
         }
 
-        loJSON = record.getModel().setInvTypCd("BPI");
+        loJSON = record.getModel() .setDescription("BPI");
+        if ("error".equals((String) loJSON.get("result"))) {
+            Assert.fail((String) loJSON.get("message"));
+        }
+        
+        loJSON = record.getModel() .setInvenTorypCode("t5");
+        if ("error".equals((String) loJSON.get("result"))) {
+            Assert.fail((String) loJSON.get("message"));
+        }
+        
+         loJSON = record.getModel() .setClassify("t");
         if ("error".equals((String) loJSON.get("result"))) {
             Assert.fail((String) loJSON.get("message"));
         }
