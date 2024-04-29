@@ -78,7 +78,6 @@ public class Size implements GRecord {
             loJSON.put("result", "error");
             loJSON.put("message", "No record loaded to update.");
         }
-
         return loJSON;
     }
 
@@ -99,7 +98,6 @@ public class Size implements GRecord {
                 poGRider.rollbackTrans();
             }
         }
-
         return poJSON;
     }
 
@@ -145,7 +143,6 @@ public class Size implements GRecord {
             poJSON.put("result", "error");
             poJSON.put("message", "No record loaded to update.");
         }
-
         return poJSON;
     }
 
@@ -181,7 +178,6 @@ public class Size implements GRecord {
             poJSON.put("message", "No record loaded to update.");
             return poJSON;
         }
-
     }
 
 //additional methods
