@@ -64,7 +64,7 @@ public class Category implements GRecord {
 
     @Override
     public JSONObject openRecord(String fsValue) {
-        return poModel.openRecord("sCategrCd = " + SQLUtil.toSQL(fsValue));
+        return poModel.openRecord("sBrandCde = " + SQLUtil.toSQL(fsValue));
     }
 
     @Override
@@ -176,7 +176,7 @@ public class Category implements GRecord {
 
         if (poJSON
                 != null) {
-            return poModel.openRecord((String) poJSON.get("sCategrCd"));
+            return poModel.openRecord((String) poJSON.get("sBrandCde"));
         } else {
             poJSON.put("result", "error");
             poJSON.put("message", "No record loaded to update.");
