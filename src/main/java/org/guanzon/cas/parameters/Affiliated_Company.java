@@ -78,7 +78,6 @@ public class Affiliated_Company implements GRecord {
             loJSON.put("result", "error");
             loJSON.put("message", "No record loaded to update.");
         }
-
         return loJSON;
     }
 
@@ -99,7 +98,6 @@ public class Affiliated_Company implements GRecord {
                 poGRider.rollbackTrans();
             }
         }
-
         return poJSON;
     }
 
@@ -145,7 +143,6 @@ public class Affiliated_Company implements GRecord {
             poJSON.put("result", "error");
             poJSON.put("message", "No record loaded to update.");
         }
-
         return poJSON;
     }
 
@@ -174,8 +171,7 @@ public class Affiliated_Company implements GRecord {
                 "sCompnyCd»sCompnyNm",
                 fbByCode ? 0 : 1);
 
-        if (poJSON
-                != null) {
+        if (poJSON != null) {
             return poModel.openRecord((String) poJSON.get("sCompnyCd"));
         } else {
             poJSON.put("result", "error");
@@ -184,7 +180,7 @@ public class Affiliated_Company implements GRecord {
         }
     }
 
-    //additional methods
+//additional methods
     @Override
     public Model_Affiliated_Company getModel() {
         return poModel;
