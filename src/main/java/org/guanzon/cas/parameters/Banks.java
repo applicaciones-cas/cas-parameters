@@ -78,7 +78,6 @@ public class Banks implements GRecord {
             loJSON.put("result", "error");
             loJSON.put("message", "No record loaded to update.");
         }
-
         return loJSON;
     }
 
@@ -99,7 +98,6 @@ public class Banks implements GRecord {
                 poGRider.rollbackTrans();
             }
         }
-
         return poJSON;
     }
 
@@ -145,7 +143,6 @@ public class Banks implements GRecord {
             poJSON.put("result", "error");
             poJSON.put("message", "No record loaded to update.");
         }
-
         return poJSON;
     }
 
@@ -174,9 +171,8 @@ public class Banks implements GRecord {
                 "sBankIDxx»sBankName",
                 fbByCode ? 0 : 1);
 
-        if (poJSON
-                != null) {
-            return poModel.openRecord((String) poJSON.get("sBankIDxx"));
+        if (poJSON != null) {
+            return poModel.openRecord((String) poJSON.get("sBankName"));
         } else {
             poJSON.put("result", "error");
             poJSON.put("message", "No record loaded to update.");
@@ -184,7 +180,7 @@ public class Banks implements GRecord {
         }
     }
 
-    //additional methods
+//additional methods
     @Override
     public Model_Banks getModel() {
         return poModel;
