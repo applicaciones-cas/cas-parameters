@@ -1,4 +1,5 @@
 
+import java.math.BigDecimal;
 import org.guanzon.appdriver.base.GRider;
 import org.guanzon.appdriver.base.MiscUtil;
 import org.guanzon.cas.parameters.Labor;
@@ -43,17 +44,17 @@ public class testLabor {
             Assert.fail((String) loJSON.get("message"));
         }
 
-        loJSON = record.getModel().setPriceLevel1(21345.65);
+        loJSON = record.getModel().setPriceLevel1(BigDecimal.valueOf(21345.65));
         if ("error".equals((String) loJSON.get("result"))) {
             Assert.fail((String) loJSON.get("message"));
         }
 
-        loJSON = record.getModel().setPriceLevel2(67894.23);
+        loJSON = record.getModel().setPriceLevel2(BigDecimal.valueOf(67894.23));
         if ("error".equals((String) loJSON.get("result"))) {
             Assert.fail((String) loJSON.get("message"));
         }
 
-        loJSON = record.getModel().setPriceLevel3(12347.58);
+        loJSON = record.getModel().setPriceLevel3(BigDecimal.valueOf(12347.58));
         if ("error".equals((String) loJSON.get("result"))) {
             Assert.fail((String) loJSON.get("message"));
         }
