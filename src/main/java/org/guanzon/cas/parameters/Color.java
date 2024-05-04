@@ -64,7 +64,7 @@ public class Color implements GRecord {
 
     @Override
     public JSONObject openRecord(String fsValue) {
-        return poModel.openRecord("sColorCde = " + SQLUtil.toSQL(fsValue));
+        return poModel.openRecord(fsValue);
     }
 
     @Override

@@ -64,7 +64,7 @@ public class Salesman implements GRecord {
 
     @Override
     public JSONObject openRecord(String fsValue) {
-        return poModel.openRecord("sEmployID = " + SQLUtil.toSQL(fsValue));
+        return poModel.openRecord(fsValue);
     }
 
     @Override

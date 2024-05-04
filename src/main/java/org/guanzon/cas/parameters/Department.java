@@ -64,7 +64,7 @@ public class Department implements GRecord {
 
     @Override
     public JSONObject openRecord(String fsValue) {
-        return poModel.openRecord("sDeptIDxx = " + SQLUtil.toSQL(fsValue));
+        return poModel.openRecord(fsValue);
     }
 
     @Override

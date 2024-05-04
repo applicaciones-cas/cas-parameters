@@ -64,7 +64,7 @@ public class Category_Level2 implements GRecord {
 
     @Override
     public JSONObject openRecord(String fsValue) {
-        return poModel.openRecord("sCategrCd = " + SQLUtil.toSQL(fsValue));
+        return poModel.openRecord(fsValue);
     }
 
     @Override

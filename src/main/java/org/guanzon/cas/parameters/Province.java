@@ -64,7 +64,7 @@ public class Province implements GRecord {
 
     @Override
     public JSONObject openRecord(String fsValue) {
-        return poModel.openRecord("sProvIDxx = " + SQLUtil.toSQL(fsValue));
+        return poModel.openRecord(fsValue);
     }
 
     @Override
