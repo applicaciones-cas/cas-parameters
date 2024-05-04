@@ -169,7 +169,7 @@ public class Relationship implements GRecord {
         poJSON = ShowDialogFX.Search(poGRider,
                 lsSQL,
                 fsValue,
-                "Code»Name",
+                "ID»Description",
                 "sRelatnID»sRelatnDs",
                 "sRelatnID»sRelatnDs",
                 fbByCode ? 0 : 1);

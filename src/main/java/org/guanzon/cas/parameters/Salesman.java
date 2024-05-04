@@ -169,9 +169,9 @@ public class Salesman implements GRecord {
         poJSON = ShowDialogFX.Search(poGRider,
                 lsSQL,
                 fsValue,
-                "Code»Name",
-                "sEmployID»sLastName",
-                "sEmployID»sLastName",
+                "ID»Last Name»First Name»Middle Name",
+                "sEmployID»sLastName»sFrstName»sMiddName",
+                "sEmployID»sLastName»sFrstName»sMiddName",
                 fbByCode ? 0 : 1);
 
         if (poJSON != null) {
