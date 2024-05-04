@@ -1,4 +1,5 @@
 
+import java.math.BigDecimal;
 import org.guanzon.appdriver.base.GRider;
 import org.guanzon.appdriver.base.MiscUtil;
 import org.guanzon.cas.parameters.Region;
@@ -43,22 +44,22 @@ public class testRegion {
             Assert.fail((String) loJSON.get("message"));
         }
 
-        loJSON = record.getModel().setMinimumWages(23457.0);
+        loJSON = record.getModel().setMinimumWages(BigDecimal.valueOf(23457.0));
         if ("error".equals((String) loJSON.get("result"))) {
             Assert.fail((String) loJSON.get("message"));
         }
 
-        loJSON = record.getModel().setColaAmount(23567.34);
+        loJSON = record.getModel().setColaAmount(BigDecimal.valueOf(23567.34));
         if ("error".equals((String) loJSON.get("result"))) {
             Assert.fail((String) loJSON.get("message"));
         }
 
-        loJSON = record.getModel().setMinimumWage2(23522.0);
+        loJSON = record.getModel().setMinimumWage2(BigDecimal.valueOf(23522.0));
         if ("error".equals((String) loJSON.get("result"))) {
             Assert.fail((String) loJSON.get("message"));
         }
 
-        loJSON = record.getModel().setColaAmount2(23435.35);
+        loJSON = record.getModel().setColaAmount2(BigDecimal.valueOf(23435.35));
         if ("error".equals((String) loJSON.get("result"))) {
             Assert.fail((String) loJSON.get("message"));
         }

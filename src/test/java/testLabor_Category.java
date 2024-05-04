@@ -1,4 +1,5 @@
 
+import java.math.BigDecimal;
 import org.guanzon.appdriver.base.GRider;
 import org.guanzon.appdriver.base.MiscUtil;
 import org.guanzon.cas.parameters.Labor_Category;
@@ -43,7 +44,7 @@ public class testLabor_Category {
             Assert.fail((String) loJSON.get("message"));
         }
 
-        loJSON = record.getModel().setAmount(78042.23);
+        loJSON = record.getModel().setAmount(BigDecimal.valueOf(78042.23));
         if ("error".equals((String) loJSON.get("result"))) {
             Assert.fail((String) loJSON.get("message"));
         }
