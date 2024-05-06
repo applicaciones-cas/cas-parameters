@@ -176,7 +176,7 @@ public class Color implements GRecord {
 
         if (poJSON
                 != null) {
-            return poModel.openRecord((String) poJSON.get("sColorIDx"));
+            return poModel.openRecord((String) poJSON.get("sColorCde"));
         } else {
             poJSON.put("result", "error");
             poJSON.put("message", "No record loaded to update.");

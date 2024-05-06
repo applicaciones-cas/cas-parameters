@@ -176,7 +176,7 @@ public class Category implements GRecord {
 
         if (poJSON
                 != null) {
-            return poModel.openRecord((String) poJSON.get("sBrandCde"));
+            return poModel.openRecord((String) poJSON.get("sCategrCd"));
         } else {
             poJSON.put("result", "error");
             poJSON.put("message", "No record loaded to update.");

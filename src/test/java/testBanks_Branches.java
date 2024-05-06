@@ -44,7 +44,7 @@ public class testBanks_Branches {
             Assert.fail((String) loJSON.get("message"));
         }
         
-         loJSON = record.getModel().setBranchesBanksCoDe("4343");
+         loJSON = record.getModel().setBranchesBanksCode("4343");
         if ("error".equals((String) loJSON.get("result"))) {
             Assert.fail((String) loJSON.get("message"));
         }

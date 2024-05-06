@@ -169,7 +169,7 @@ public class Barangay implements GRecord {
         poJSON = ShowDialogFX.Search(poGRider,
                 lsSQL,
                 fsValue,
-                "Code»Name",
+                "ID»Name",
                 "sBrgyIDxx»sBrgyName",
                 "sBrgyIDxx»sBrgyName",
                 fbByCode ? 0 : 1);

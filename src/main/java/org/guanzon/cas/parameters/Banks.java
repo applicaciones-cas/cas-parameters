@@ -166,13 +166,13 @@ public class Banks implements GRecord {
         poJSON = ShowDialogFX.Search(poGRider,
                 lsSQL,
                 fsValue,
-                "Code»Name",
-                "sBankIDxx»sBankName",
-                "sBankIDxx»sBankName",
+                "ID»Name»Code",
+                "sBankIDxx»sBankName»sBankCode",
+                "sBankIDxx»sBankName»sBankCode",
                 fbByCode ? 0 : 1);
 
         if (poJSON != null) {
-            return poModel.openRecord((String) poJSON.get("sBankName"));
+            return poModel.openRecord((String) poJSON.get("sBankIDxx"));
         } else {
             poJSON.put("result", "error");
             poJSON.put("message", "No record loaded to update.");
