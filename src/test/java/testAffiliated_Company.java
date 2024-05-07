@@ -53,6 +53,7 @@ public class testAffiliated_Company {
         if ("error".equals((String) loJSON.get("result"))) {
             Assert.fail((String) loJSON.get("message"));
         }
+        
 
     }
 

@@ -33,12 +33,17 @@ public class testBanks {
             Assert.fail((String) loJSON.get("message"));
         }
 
-        loJSON = record.getModel().setBankName("Mark Manaois Bank");
+        loJSON = record.newRecord();
         if ("error".equals((String) loJSON.get("result"))) {
             Assert.fail((String) loJSON.get("message"));
         }
 
-        loJSON = record.getModel().setBankCode("MMB");
+        loJSON = record.getModel().setBankID("12");
+        if ("error".equals((String) loJSON.get("result"))) {
+            Assert.fail((String) loJSON.get("message"));
+        }
+
+        loJSON = record.getModel().setBankName("Guanzon");
         if ("error".equals((String) loJSON.get("result"))) {
             Assert.fail((String) loJSON.get("message"));
         }
@@ -49,11 +54,6 @@ public class testBanks {
         }
 
         loJSON = record.getModel().setModifiedDate(instance.getServerDate());
-        if ("error".equals((String) loJSON.get("result"))) {
-            Assert.fail((String) loJSON.get("message"));
-        }
-
-        loJSON = record.saveRecord();
         if ("error".equals((String) loJSON.get("result"))) {
             Assert.fail((String) loJSON.get("message"));
         }

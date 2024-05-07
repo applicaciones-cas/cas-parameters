@@ -44,37 +44,37 @@ public class testBanks_Branches {
             Assert.fail((String) loJSON.get("message"));
         }
         
-         loJSON = record.getModel().setBranchesBanksCoDe("MMB");
+         loJSON = record.getModel().setBranchesBanksCode("4343");
         if ("error".equals((String) loJSON.get("result"))) {
             Assert.fail((String) loJSON.get("message"));
         }
         
-         loJSON = record.getModel().setBanksID("MMB");
+         loJSON = record.getModel().setBanksID("2");
         if ("error".equals((String) loJSON.get("result"))) {
             Assert.fail((String) loJSON.get("message"));
         }
         
-        loJSON = record.getModel() .setBranchesBanksID("MMB");
+        loJSON = record.getModel() .setBranchesBanksID("3");
         if ("error".equals((String) loJSON.get("result"))) {
             Assert.fail((String) loJSON.get("message"));
         }
         
-        loJSON = record.getModel() .setAddress("MMB");
+        loJSON = record.getModel() .setAddress("Salapingao");
         if ("error".equals((String) loJSON.get("result"))) {
             Assert.fail((String) loJSON.get("message"));
         }
         
-        loJSON = record.getModel() .setTownID("MMB");
+        loJSON = record.getModel() .setTownID("Dagupan");
         if ("error".equals((String) loJSON.get("result"))) {
             Assert.fail((String) loJSON.get("message"));
         }
         
-        loJSON = record.getModel() .setTelephoneNumber("MMB");
+        loJSON = record.getModel() .setTelephoneNumber("09708487992");
         if ("error".equals((String) loJSON.get("result"))) {
             Assert.fail((String) loJSON.get("message"));
         }
         
-         loJSON = record.getModel() .setFaxNumber("MMB");
+         loJSON = record.getModel() .setFaxNumber("4234");
         if ("error".equals((String) loJSON.get("result"))) {
             Assert.fail((String) loJSON.get("message"));
         }

@@ -12,49 +12,64 @@ import org.junit.runners.MethodSorters;
 
 @FixMethodOrder(MethodSorters.NAME_ASCENDING)
 public class testSalesman {
+
     static GRider instance;
     static Salesman record;
-    
+
     @BeforeClass
-    public static void setUpClass(){
+    public static void setUpClass() {
         System.setProperty("sys.default.path.metadata", "D:/GGC_Maven_Systems/config/metadata/");
-        
+
         instance = MiscUtil.Connect();
         record = new Salesman(instance, false);
     }
-    
-   
-    
+
     @Test
-    public void testProgramFlow(){
+    public void testProgramFlow() {
         JSONObject loJSON;
-        
+
         loJSON = record.newRecord();
-        if ("error".equals((String) loJSON.get("result"))) Assert.fail((String) loJSON.get("message"));
-        
+        if ("error".equals((String) loJSON.get("result"))) {
+            Assert.fail((String) loJSON.get("message"));
+        }
+
         loJSON = record.getModel().setBranchCode("2024");
-        if ("error".equals((String) loJSON.get("result"))) Assert.fail((String) loJSON.get("message"));
-        
+        if ("error".equals((String) loJSON.get("result"))) {
+            Assert.fail((String) loJSON.get("message"));
+        }
+
         loJSON = record.getModel().setLastName("Fernandz");
-        if ("error".equals((String) loJSON.get("result"))) Assert.fail((String) loJSON.get("message"));
-        
+        if ("error".equals((String) loJSON.get("result"))) {
+            Assert.fail((String) loJSON.get("message"));
+        }
+
         loJSON = record.getModel().setFristName("Mark");
-        if ("error".equals((String) loJSON.get("result"))) Assert.fail((String) loJSON.get("message"));
-        
+        if ("error".equals((String) loJSON.get("result"))) {
+            Assert.fail((String) loJSON.get("message"));
+        }
+
         loJSON = record.getModel().setMiddleName("Luis");
-        if ("error".equals((String) loJSON.get("result"))) Assert.fail((String) loJSON.get("message"));
-        
+        if ("error".equals((String) loJSON.get("result"))) {
+            Assert.fail((String) loJSON.get("message"));
+        }
+
         loJSON = record.getModel().setModifiedBy(instance.getUserID());
-        if ("error".equals((String) loJSON.get("result"))) Assert.fail((String) loJSON.get("message"));
-        
+        if ("error".equals((String) loJSON.get("result"))) {
+            Assert.fail((String) loJSON.get("message"));
+        }
+
         loJSON = record.getModel().setModifiedDate(instance.getServerDate());
-        if ("error".equals((String) loJSON.get("result"))) Assert.fail((String) loJSON.get("message"));
-        
+        if ("error".equals((String) loJSON.get("result"))) {
+            Assert.fail((String) loJSON.get("message"));
+        }
+
         loJSON = record.saveRecord();
-        if ("error".equals((String) loJSON.get("result"))) Assert.fail((String) loJSON.get("message"));
+        if ("error".equals((String) loJSON.get("result"))) {
+            Assert.fail((String) loJSON.get("message"));
+        }
     }
-    
-     @AfterClass
+
+    @AfterClass
     public static void tearDownClass() {
         record = null;
         instance = null;

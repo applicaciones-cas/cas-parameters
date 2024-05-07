@@ -43,7 +43,7 @@ public class testCategory_Level2 {
             Assert.fail((String) loJSON.get("message"));
         }
         
-        loJSON = record.getModel() .setInvenTorypCode("BPI");
+        loJSON = record.getModel().setInventoryTypeCode("BPI");
         if ("error".equals((String) loJSON.get("result"))) {
             Assert.fail((String) loJSON.get("message"));
         }
