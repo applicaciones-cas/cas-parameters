@@ -11,6 +11,7 @@ org\guanzon\cas\parameters\Inv_Location.class
 org\guanzon\cas\parameters\Labor_Category.class
 org\guanzon\cas\parameters\Banks_Branches.class
 org\guanzon\cas\parameters\Barangay.class
+org\guanzon\cas\parameters\Term.class
 org\guanzon\cas\parameters\Model.class
 org\guanzon\cas\parameters\Salesman.class
 org\guanzon\cas\parameters\Size.class

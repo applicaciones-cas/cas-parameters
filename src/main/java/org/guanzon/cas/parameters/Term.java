@@ -6,7 +6,7 @@ import org.guanzon.appdriver.base.MiscUtil;
 import org.guanzon.appdriver.base.SQLUtil;
 import org.guanzon.appdriver.constant.EditMode;
 import org.guanzon.appdriver.iface.GRecord;
-import org.guanzon.cas.model.parameters.Model_Size;
+import org.guanzon.cas.model.parameters.Model_Term;
 import org.json.simple.JSONObject;
 
 public class Term implements GRecord {
@@ -16,14 +16,14 @@ public class Term implements GRecord {
     int pnEditMode;
     String psRecdStat;
 
-    Model_Size poModel;
+    Model_Term poModel;
     JSONObject poJSON;
 
     public Term(GRider foGRider, boolean fbWthParent) {
         poGRider = foGRider;
         pbWthParent = fbWthParent;
 
-        poModel = new Model_Size(foGRider);
+        poModel = new Model_Term(foGRider);
         pnEditMode = EditMode.UNKNOWN;
     }
 
@@ -182,7 +182,7 @@ public class Term implements GRecord {
 
 //additional methods
     @Override
-    public Model_Size getModel() {
+    public Model_Term getModel() {
         return poModel;
     }
 }
