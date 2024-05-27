@@ -2,6 +2,7 @@ org\guanzon\cas\parameters\Country.class
 org\guanzon\cas\parameters\Brand.class
 org\guanzon\cas\parameters\Category_Level2.class
 org\guanzon\cas\parameters\Banks.class
+org\guanzon\cas\parameters\Warehouse.class
 org\guanzon\cas\parameters\Category_Level4.class
 org\guanzon\cas\parameters\Department.class
 org\guanzon\cas\parameters\Category.class
