@@ -1,6 +1,9 @@
+
+import java.math.BigDecimal;
 import org.guanzon.appdriver.base.GRider;
 import org.guanzon.appdriver.base.MiscUtil;
-import org.guanzon.cas.parameters.Company;
+import org.guanzon.cas.parameters.Term;
+import org.guanzon.cas.parameters.Warehouse;
 import org.json.simple.JSONObject;
 import org.junit.AfterClass;
 import org.junit.Assert;
@@ -13,14 +16,14 @@ import org.junit.runners.MethodSorters;
 public class testWarehouse {
 
     static GRider instance;
-    static Company record;
+    static Warehouse record;
 
     @BeforeClass
     public static void setUpClass() {
         System.setProperty("sys.default.path.metadata", "D:/GGC_Maven_Systems/config/metadata/");
 
         instance = MiscUtil.Connect();
-        record = new Company(instance, false);
+        record = new Warehouse(instance, false);
     }
 
     @Test
@@ -32,22 +35,12 @@ public class testWarehouse {
             Assert.fail((String) loJSON.get("message"));
         }
 
-        loJSON = record.getModel() .setCompanyName("US");
+        loJSON = record.getModel().setsWHouseNm("0");
         if ("error".equals((String) loJSON.get("result"))) {
             Assert.fail((String) loJSON.get("message"));
         }
-
-        loJSON = record.getModel().setCompanyCode("33");
-        if ("error".equals((String) loJSON.get("result"))) {
-            Assert.fail((String) loJSON.get("message"));
-        }
-        
-        loJSON = record.getModel().setEmployerNumber("33");
-        if ("error".equals((String) loJSON.get("result"))) {
-            Assert.fail((String) loJSON.get("message"));
-        }
-
-        loJSON = record.getModel().setModifiedBy(instance.getUserID());
+           
+        loJSON = record.getModel().setModified(instance.getUserID());
         if ("error".equals((String) loJSON.get("result"))) {
             Assert.fail((String) loJSON.get("message"));
         }
@@ -57,7 +50,10 @@ public class testWarehouse {
             Assert.fail((String) loJSON.get("message"));
         }
 
-     
+        loJSON = record.saveRecord();
+        if ("error".equals((String) loJSON.get("result"))) {
+            Assert.fail((String) loJSON.get("message"));
+        }
     }
 
     @AfterClass

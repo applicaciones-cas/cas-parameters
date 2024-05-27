@@ -6,7 +6,8 @@ import org.guanzon.appdriver.base.MiscUtil;
 import org.guanzon.appdriver.base.SQLUtil;
 import org.guanzon.appdriver.constant.EditMode;
 import org.guanzon.appdriver.iface.GRecord;
-import org.guanzon.cas.model.parameters.Model_Company;
+import org.guanzon.cas.model.parameters.Model_Term;
+import org.guanzon.cas.model.parameters.Model_Warehouse;
 import org.json.simple.JSONObject;
 
 public class Warehouse implements GRecord {
@@ -16,14 +17,14 @@ public class Warehouse implements GRecord {
     int pnEditMode;
     String psRecdStat;
 
-    Model_Company poModel;
+    Model_Warehouse poModel;
     JSONObject poJSON;
 
     public Warehouse(GRider foGRider, boolean fbWthParent) {
         poGRider = foGRider;
         pbWthParent = fbWthParent;
 
-        poModel = new Model_Company(foGRider);
+        poModel = new Model_Warehouse(foGRider);
         pnEditMode = EditMode.UNKNOWN;
     }
 
@@ -78,7 +79,6 @@ public class Warehouse implements GRecord {
             loJSON.put("result", "error");
             loJSON.put("message", "No record loaded to update.");
         }
-
         return loJSON;
     }
 
@@ -99,7 +99,6 @@ public class Warehouse implements GRecord {
                 poGRider.rollbackTrans();
             }
         }
-
         return poJSON;
     }
 
@@ -145,7 +144,6 @@ public class Warehouse implements GRecord {
             poJSON.put("result", "error");
             poJSON.put("message", "No record loaded to update.");
         }
-
         return poJSON;
     }
 
@@ -163,20 +161,19 @@ public class Warehouse implements GRecord {
             lsCondition = "cRecdStat = " + SQLUtil.toSQL(psRecdStat);
         }
 
-        String lsSQL = MiscUtil.addCondition(poModel.makeSelectSQL(), " sCompnyNm LIKE "
+        String lsSQL = MiscUtil.addCondition(poModel.makeSelectSQL(), " sSizeName LIKE "
                 + SQLUtil.toSQL(fsValue + "%") + " AND " + lsCondition);
 
         poJSON = ShowDialogFX.Search(poGRider,
                 lsSQL,
                 fsValue,
                 "Code»Name",
-                "sCompnyID»sCompnyNm",
-                "sCompnyID»sCompnyNm",
+                "sSizeIDxx»sSizeName",
+                "sSizeIDxx»sSizeName",
                 fbByCode ? 0 : 1);
 
-        if (poJSON
-                != null) {
-            return poModel.openRecord((String) poJSON.get("sCompnyID"));
+        if (poJSON != null) {
+            return poModel.openRecord((String) poJSON.get("sSizeIDxx"));
         } else {
             poJSON.put("result", "error");
             poJSON.put("message", "No record loaded to update.");
@@ -184,9 +181,9 @@ public class Warehouse implements GRecord {
         }
     }
 
-    //additional methods
+//additional methods
     @Override
-    public Model_Company getModel() {
+    public Model_Warehouse getModel() {
         return poModel;
     }
 }
