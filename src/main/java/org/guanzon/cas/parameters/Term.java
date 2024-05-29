@@ -167,12 +167,12 @@ public class Term implements GRecord {
                 lsSQL,
                 fsValue,
                 "Code»Name",
-                "sSizeIDxx»sSizeName",
-                "sSizeIDxx»sSizeName",
+                "sTermCode»sDescript",
+                "sTermCode»sDescript",
                 fbByCode ? 0 : 1);
 
         if (poJSON != null) {
-            return poModel.openRecord((String) poJSON.get("sSizeIDxx"));
+            return poModel.openRecord((String) poJSON.get("sTermCode"));
         } else {
             poJSON.put("result", "error");
             poJSON.put("message", "No record loaded to update.");
