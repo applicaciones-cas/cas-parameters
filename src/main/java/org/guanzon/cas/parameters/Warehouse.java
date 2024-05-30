@@ -6,7 +6,7 @@ import org.guanzon.appdriver.base.MiscUtil;
 import org.guanzon.appdriver.base.SQLUtil;
 import org.guanzon.appdriver.constant.EditMode;
 import org.guanzon.appdriver.iface.GRecord;
-import org.guanzon.cas.model.parameters.Model_Term;
+import org.guanzon.cas.model.parameters.Model_Size;
 import org.guanzon.cas.model.parameters.Model_Warehouse;
 import org.json.simple.JSONObject;
 
@@ -168,12 +168,12 @@ public class Warehouse implements GRecord {
                 lsSQL,
                 fsValue,
                 "ID»Warehouse",
-                "sWHouseIDxx»sWHouseNm",
-                "sWHouseIDxx»sWHouseNm",
+                "sWHouseID»sWHouseNm",
+                "sWHouseID»sWHouseNm",
                 fbByCode ? 0 : 1);
 
         if (poJSON != null) {
-            return poModel.openRecord((String) poJSON.get("sWHouseIDxx"));
+            return poModel.openRecord((String) poJSON.get("sWHouseID"));
         } else {
             poJSON.put("result", "error");
             poJSON.put("message", "No record loaded to update.");

@@ -1,8 +1,7 @@
 
-import java.math.BigDecimal;
 import org.guanzon.appdriver.base.GRider;
 import org.guanzon.appdriver.base.MiscUtil;
-import org.guanzon.cas.parameters.Term;
+import org.guanzon.cas.parameters.Size;
 import org.guanzon.cas.parameters.Warehouse;
 import org.json.simple.JSONObject;
 import org.junit.AfterClass;
@@ -35,11 +34,16 @@ public class testWarehouse {
             Assert.fail((String) loJSON.get("message"));
         }
 
-        loJSON = record.getModel().setsWHouseNm("0");
+         loJSON = record.getModel().setsWHouseID("");
         if ("error".equals((String) loJSON.get("result"))) {
             Assert.fail((String) loJSON.get("message"));
         }
-           
+        
+        loJSON = record.getModel().setsWHouseNm("KKK");
+        if ("error".equals((String) loJSON.get("result"))) {
+            Assert.fail((String) loJSON.get("message"));
+        }
+
         loJSON = record.getModel().setModified(instance.getUserID());
         if ("error".equals((String) loJSON.get("result"))) {
             Assert.fail((String) loJSON.get("message"));
