@@ -161,19 +161,19 @@ public class Warehouse implements GRecord {
             lsCondition = "cRecdStat = " + SQLUtil.toSQL(psRecdStat);
         }
 
-        String lsSQL = MiscUtil.addCondition(poModel.makeSelectSQL(), " sSizeName LIKE "
+        String lsSQL = MiscUtil.addCondition(poModel.makeSelectSQL(), " sWHouseNm LIKE "
                 + SQLUtil.toSQL(fsValue + "%") + " AND " + lsCondition);
 
         poJSON = ShowDialogFX.Search(poGRider,
                 lsSQL,
                 fsValue,
-                "Code»Name",
-                "sSizeIDxx»sSizeName",
-                "sSizeIDxx»sSizeName",
+                "ID»Warehouse",
+                "sWHouseIDxx»sWHouseNm",
+                "sWHouseIDxx»sWHouseNm",
                 fbByCode ? 0 : 1);
 
         if (poJSON != null) {
-            return poModel.openRecord((String) poJSON.get("sSizeIDxx"));
+            return poModel.openRecord((String) poJSON.get("sWHouseIDxx"));
         } else {
             poJSON.put("result", "error");
             poJSON.put("message", "No record loaded to update.");
