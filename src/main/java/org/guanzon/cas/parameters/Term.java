@@ -6,29 +6,30 @@ import org.guanzon.appdriver.base.MiscUtil;
 import org.guanzon.appdriver.base.SQLUtil;
 import org.guanzon.appdriver.constant.EditMode;
 import org.guanzon.appdriver.iface.GRecord;
-import org.guanzon.cas.model.parameters.Model_Salesman;
+import org.guanzon.cas.model.parameters.Model_Term;
 import org.json.simple.JSONObject;
 
-public class Salesman implements GRecord {
+public class Term implements GRecord {
 
     GRider poGRider;
     boolean pbWthParent;
     int pnEditMode;
     String psRecdStat;
 
-    Model_Salesman poModel;
+    Model_Term poModel;
     JSONObject poJSON;
 
-    public Salesman(GRider foGRider, boolean fbWthParent) {
+    public Term(GRider foGRider, boolean fbWthParent) {
         poGRider = foGRider;
         pbWthParent = fbWthParent;
 
-        poModel = new Model_Salesman(foGRider);
+        poModel = new Model_Term(foGRider);
         pnEditMode = EditMode.UNKNOWN;
     }
 
     @Override
-    public void setRecordStatus(String fsValue) {        psRecdStat = fsValue;
+    public void setRecordStatus(String fsValue) {
+        psRecdStat = fsValue;
     }
 
     @Override
@@ -77,7 +78,6 @@ public class Salesman implements GRecord {
             loJSON.put("result", "error");
             loJSON.put("message", "No record loaded to update.");
         }
-
         return loJSON;
     }
 
@@ -98,7 +98,6 @@ public class Salesman implements GRecord {
                 poGRider.rollbackTrans();
             }
         }
-
         return poJSON;
     }
 
@@ -144,7 +143,6 @@ public class Salesman implements GRecord {
             poJSON.put("result", "error");
             poJSON.put("message", "No record loaded to update.");
         }
-
         return poJSON;
     }
 
@@ -162,19 +160,19 @@ public class Salesman implements GRecord {
             lsCondition = "cRecdStat = " + SQLUtil.toSQL(psRecdStat);
         }
 
-        String lsSQL = MiscUtil.addCondition(poModel.makeSelectSQL(), " sLastName LIKE "
+        String lsSQL = MiscUtil.addCondition(poModel.makeSelectSQL(), " sDescript LIKE "
                 + SQLUtil.toSQL(fsValue + "%") + " AND " + lsCondition);
 
         poJSON = ShowDialogFX.Search(poGRider,
                 lsSQL,
                 fsValue,
-                "ID»Last Name»First Name»Middle Name",
-                "sEmployID»sLastName»sFrstName»sMiddName",
-                "sEmployID»sLastName»sFrstName»sMiddName",
+                "Code»Name",
+                "sTermCode»sDescript",
+                "sTermCode»sDescript",
                 fbByCode ? 0 : 1);
 
         if (poJSON != null) {
-            return poModel.openRecord((String) poJSON.get("sEmployID"));
+            return poModel.openRecord((String) poJSON.get("sTermCode"));
         } else {
             poJSON.put("result", "error");
             poJSON.put("message", "No record loaded to update.");
@@ -182,9 +180,9 @@ public class Salesman implements GRecord {
         }
     }
 
-    //additional methods
+//additional methods
     @Override
-    public Model_Salesman getModel() {
+    public Model_Term getModel() {
         return poModel;
     }
 }

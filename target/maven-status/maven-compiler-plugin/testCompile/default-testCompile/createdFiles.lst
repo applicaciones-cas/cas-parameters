@@ -1,10 +1,11 @@
 testModel.class
+testWarehouse.class
+testTerm.class
 testMade.class
 testAffiliated_Company.class
 testDepartment.class
 testLabor.class
 testLabor_Category.class
-testCategory.class
 testBarangay.class
 testCountry.class
 testCategory_Level3.class
