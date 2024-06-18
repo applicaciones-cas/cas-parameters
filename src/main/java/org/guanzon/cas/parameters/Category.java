@@ -163,8 +163,7 @@ public class Category implements GRecord {
             lsCondition = "cRecdStat = " + SQLUtil.toSQL(psRecdStat);
         }
 
-        String lsSQL = MiscUtil.addCondition(poModel.makeSelectSQL(), " sDescript LIKE "
-                + SQLUtil.toSQL(fsValue + "%") + " AND " + lsCondition);
+        String lsSQL = MiscUtil.addCondition(poModel.makeSelectSQL(), lsCondition);
 
         poJSON = ShowDialogFX.Search(poGRider,
                 lsSQL,

@@ -32,23 +32,23 @@ public class testCategory_Level2 {
         if ("error".equals((String) loJSON.get("result"))) {
             Assert.fail((String) loJSON.get("message"));
         }
-
-        loJSON = record.getModel().setCategoryCode("BPI");
-        if ("error".equals((String) loJSON.get("result"))) {
-            Assert.fail((String) loJSON.get("message"));
-        }
-
-        loJSON = record.getModel().setDescription("BPI");
+        
+        loJSON = record.getModel().setDescription("Appliances");
         if ("error".equals((String) loJSON.get("result"))) {
             Assert.fail((String) loJSON.get("message"));
         }
         
-        loJSON = record.getModel().setInventoryTypeCode("BPI");
+        loJSON = record.getModel().setInventoryTypeCode("0002");
         if ("error".equals((String) loJSON.get("result"))) {
             Assert.fail((String) loJSON.get("message"));
         }
         
-         loJSON = record.getModel() .setMainCategory("BPI");
+        loJSON = record.getModel() .setMainCategory("0002");
+        if ("error".equals((String) loJSON.get("result"))) {
+            Assert.fail((String) loJSON.get("message"));
+        }
+        
+        loJSON = record.getModel() .setClassify(true);
         if ("error".equals((String) loJSON.get("result"))) {
             Assert.fail((String) loJSON.get("message"));
         }
@@ -62,7 +62,11 @@ public class testCategory_Level2 {
         if ("error".equals((String) loJSON.get("result"))) {
             Assert.fail((String) loJSON.get("message"));
         }
-
+        
+        loJSON = record.saveRecord();
+        if ("error".equals((String) loJSON.get("result"))) {
+            Assert.fail((String) loJSON.get("message"));
+        }
     }
 
     @AfterClass

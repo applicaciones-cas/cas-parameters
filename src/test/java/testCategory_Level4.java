@@ -38,12 +38,7 @@ public class testCategory_Level4 {
             Assert.fail((String) loJSON.get("message"));
         }
 
-        loJSON = record.getModel().setDescription("BPI");
-        if ("error".equals((String) loJSON.get("result"))) {
-            Assert.fail((String) loJSON.get("message"));
-        }
-
-        loJSON = record.getModel().setMainCategory("B");
+        loJSON = record.getModel().setDescription("Replacement");
         if ("error".equals((String) loJSON.get("result"))) {
             Assert.fail((String) loJSON.get("message"));
         }
@@ -57,7 +52,11 @@ public class testCategory_Level4 {
         if ("error".equals((String) loJSON.get("result"))) {
             Assert.fail((String) loJSON.get("message"));
         }
-
+        
+        loJSON = record.saveRecord();
+        if ("error".equals((String) loJSON.get("result"))) {
+            Assert.fail((String) loJSON.get("message"));
+        }
     }
 
     @AfterClass
