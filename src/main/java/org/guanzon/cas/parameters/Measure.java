@@ -6,24 +6,24 @@ import org.guanzon.appdriver.base.MiscUtil;
 import org.guanzon.appdriver.base.SQLUtil;
 import org.guanzon.appdriver.constant.EditMode;
 import org.guanzon.appdriver.iface.GRecord;
-import org.guanzon.cas.model.parameters.Model_Inv_Location;
+import org.guanzon.cas.model.parameters.Model_Measure;
 import org.json.simple.JSONObject;
 
-public class Inv_Location implements GRecord {
+public class Measure implements GRecord {
 
     GRider poGRider;
     boolean pbWthParent;
     int pnEditMode;
     String psRecdStat;
 
-    Model_Inv_Location poModel;
+    Model_Measure poModel;
     JSONObject poJSON;
 
-    public Inv_Location(GRider foGRider, boolean fbWthParent) {
+    public Measure(GRider foGRider, boolean fbWthParent) {
         poGRider = foGRider;
         pbWthParent = fbWthParent;
 
-        poModel = new Model_Inv_Location(foGRider);
+        poModel = new Model_Measure(foGRider);
         pnEditMode = EditMode.UNKNOWN;
     }
 
@@ -78,7 +78,6 @@ public class Inv_Location implements GRecord {
             loJSON.put("result", "error");
             loJSON.put("message", "No record loaded to update.");
         }
-
         return loJSON;
     }
 
@@ -99,7 +98,6 @@ public class Inv_Location implements GRecord {
                 poGRider.rollbackTrans();
             }
         }
-
         return poJSON;
     }
 
@@ -145,7 +143,6 @@ public class Inv_Location implements GRecord {
             poJSON.put("result", "error");
             poJSON.put("message", "No record loaded to update.");
         }
-
         return poJSON;
     }
 
@@ -163,20 +160,19 @@ public class Inv_Location implements GRecord {
             lsCondition = "cRecdStat = " + SQLUtil.toSQL(psRecdStat);
         }
 
-        String lsSQL = MiscUtil.addCondition(poModel.makeSelectSQL(), " sDescript LIKE "
+        String lsSQL = MiscUtil.addCondition(poModel.makeSelectSQL(), " sMeasurNm LIKE "
                 + SQLUtil.toSQL(fsValue + "%") + " AND " + lsCondition);
 
         poJSON = ShowDialogFX.Search(poGRider,
                 lsSQL,
                 fsValue,
-                "Code»Name»Warehouse»Section",
-                "sLocatnCd»sDescript»xWHouseNm»xSectnNme",
-                "a.sLocatnCd»a.sDescript»b.sWHouseNm»c.sSectnNme",
+                "Code»Name",
+                "sMeasurID»sMeasurNm",
+                "sMeasurID»sMeasurNm",
                 fbByCode ? 0 : 1);
 
-        if (poJSON
-                != null) {
-            return poModel.openRecord((String) poJSON.get("sLocatnCd"));
+        if (poJSON != null) {
+            return poModel.openRecord((String) poJSON.get("sMeasurID"));
         } else {
             poJSON.put("result", "error");
             poJSON.put("message", "No record loaded to update.");
@@ -184,9 +180,9 @@ public class Inv_Location implements GRecord {
         }
     }
 
-    //additional methods
+//additional methods
     @Override
-    public Model_Inv_Location getModel() {
+    public Model_Measure getModel() {
         return poModel;
     }
 }

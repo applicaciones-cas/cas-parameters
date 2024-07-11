@@ -10,6 +10,7 @@ testCategory.class
 testBarangay.class
 testCountry.class
 testCategory_Level3.class
+testSection.class
 testCompany.class
 testSalesman.class
 testColor.class
@@ -23,6 +24,7 @@ testRegion.class
 testSize.class
 testLabor_Model.class
 testColor_Detail.class
+testMeasure.class
 testInv_Location.class
 testBanks_Branches.class
 testCategory_Level4.class

@@ -39,7 +39,7 @@ public class testWarehouse {
             Assert.fail((String) loJSON.get("message"));
         }
         
-        loJSON = record.getModel().setsWHouseNm("KKK");
+        loJSON = record.getModel().setsWHouseNm("Warehouse K");
         if ("error".equals((String) loJSON.get("result"))) {
             Assert.fail((String) loJSON.get("message"));
         }

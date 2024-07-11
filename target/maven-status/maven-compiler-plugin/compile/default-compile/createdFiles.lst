@@ -1,4 +1,5 @@
 org\guanzon\cas\parameters\Country.class
+org\guanzon\cas\parameters\Measure.class
 org\guanzon\cas\parameters\Brand.class
 org\guanzon\cas\parameters\Category_Level2.class
 org\guanzon\cas\parameters\Banks.class
@@ -22,6 +23,7 @@ org\guanzon\cas\parameters\Province.class
 org\guanzon\cas\parameters\Company.class
 org\guanzon\cas\parameters\Category_Level3.class
 org\guanzon\cas\parameters\Relationship.class
+org\guanzon\cas\parameters\Section.class
 org\guanzon\cas\parameters\Color.class
 org\guanzon\cas\parameters\Made.class
 org\guanzon\cas\parameters\Inv_Type.class
