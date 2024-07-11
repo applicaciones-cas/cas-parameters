@@ -1,7 +1,7 @@
 
 import org.guanzon.appdriver.base.GRider;
 import org.guanzon.appdriver.base.MiscUtil;
-import org.guanzon.cas.parameters.Inv_Location;
+import org.guanzon.cas.parameters.Section;
 import org.json.simple.JSONObject;
 import org.junit.AfterClass;
 import org.junit.Assert;
@@ -11,17 +11,17 @@ import org.junit.Test;
 import org.junit.runners.MethodSorters;
 
 @FixMethodOrder(MethodSorters.NAME_ASCENDING)
-public class testInv_Location {
+public class testSection {
 
     static GRider instance;
-    static Inv_Location record;
+    static Section record;
 
     @BeforeClass
     public static void setUpClass() {
         System.setProperty("sys.default.path.metadata", "D:/GGC_Maven_Systems/config/metadata/");
 
         instance = MiscUtil.Connect();
-        record = new Inv_Location(instance, false);
+        record = new Section(instance, false);
     }
 
     @Test
@@ -33,21 +33,11 @@ public class testInv_Location {
             Assert.fail((String) loJSON.get("message"));
         }
 
-        loJSON = record.getModel().setDescription("BLDG. 1-F");
+        loJSON = record.getModel().setSectionName("F");
         if ("error".equals((String) loJSON.get("result"))) {
             Assert.fail((String) loJSON.get("message"));
         }
 
-        loJSON = record.getModel().setWarehouseID("001");
-        if ("error".equals((String) loJSON.get("result"))) {
-            Assert.fail((String) loJSON.get("message"));
-        }
-        
-        loJSON = record.getModel().setSectionID("M001006");
-        if ("error".equals((String) loJSON.get("result"))) {
-            Assert.fail((String) loJSON.get("message"));
-        }
-        
         loJSON = record.getModel().setModifiedBy(instance.getUserID());
         if ("error".equals((String) loJSON.get("result"))) {
             Assert.fail((String) loJSON.get("message"));
