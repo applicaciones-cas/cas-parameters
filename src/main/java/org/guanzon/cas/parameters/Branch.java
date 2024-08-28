@@ -173,15 +173,15 @@ public class Branch implements GRecord{
             lsCondition = "cRecdStat = " + SQLUtil.toSQL(psRecdStat);
         }
 
-        String lsSQL = MiscUtil.addCondition(poModel.makeSelectSQL(), " sDescript LIKE "
+        String lsSQL = MiscUtil.addCondition(poModel.makeSelectSQL(), " sBranchNm LIKE "
                 + SQLUtil.toSQL(fsValue + "%") + " AND " + lsCondition);
 
         poJSON = ShowDialogFX.Search(poGRider,
                 lsSQL,
                 fsValue,
                 "Code»Name",
-                "sBranchCd»sDescript",
-                "sBranchCd»sDescript",
+                "sBranchCd»sBranchNm",
+                "sBranchCd»sBranchNm",
                 fbByCode ? 0 : 1);
 
         if (poJSON
@@ -195,7 +195,7 @@ public class Branch implements GRecord{
     }
 
     @Override
-    public Object getModel() {
+    public Model_Branch getModel() {
         return poModel;
     }
     
