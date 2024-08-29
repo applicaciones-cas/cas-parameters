@@ -112,6 +112,69 @@ public class Branch implements GRecord{
 
         return poJSON;
     }
+    
+        
+    
+    public JSONObject searchDetail(String fsColumn, String fsValue, boolean fbByCode) {
+
+        String lsHeader = "";
+        String lsColName = "";
+        String lsColCrit = "";
+        String lsSQL = "";
+        String lsCondition = "";
+        JSONObject loJSON;
+
+        switch (fsColumn) {
+            case "sProvIDxx": //sDescript
+                Province loProvince = new Province(poGRider, true);
+                loProvince.setRecordStatus(psRecdStat);
+                loJSON = loProvince.searchRecord(fsValue, fbByCode);
+
+                if (loJSON != null) {
+                    System.out.println((String) loProvince.getMaster("sProvIDxx"));
+                    System.out.println((String) loProvince.getMaster("sProvName"));
+                    poModel.setTownID((String) loProvince.getMaster("sProvIDxx"));
+                    
+                    
+
+                    return loJSON;
+
+                } else {
+                    loJSON = new JSONObject();
+                    loJSON.put("result", "error");
+                    loJSON.put("message", "No Transaction found.");
+                    return loJSON;
+                }
+            
+           
+                
+            case "sCompnyID": //3 //8-xCategrNm //9-xInvTypNm
+                Company loCompany = new Company(poGRider, true);
+                loCompany.setRecordStatus(psRecdStat);
+                loJSON = loCompany.searchRecord(fsValue, fbByCode);
+
+                if (loJSON != null) {
+                    System.out.println((String) loCompany.getMaster("sCompnyID"));
+                    System.out.println((String) loCompany.getMaster("sCompnyNm"));
+                    poModel.setCompanyID((String) loCompany.getMaster("sCompnyID"));
+                    
+                    
+
+                    return loJSON;
+
+                } else {
+                    loJSON = new JSONObject();
+                    loJSON.put("result", "error");
+                    loJSON.put("message", "No Transaction found.");
+                    return loJSON;
+                }
+                
+
+            default:
+                return null;
+
+        }
+    }
 
     @Override
     public JSONObject deleteRecord(String string) {
@@ -162,7 +225,9 @@ public class Branch implements GRecord{
     @Override
     public JSONObject searchRecord(String fsValue, boolean fbByCode) {
         String lsCondition = "";
-
+        if (fsValue == null){
+            fsValue = "";
+        }
         if (psRecdStat.length() > 1) {
             for (int lnCtr = 0; lnCtr <= psRecdStat.length() - 1; lnCtr++) {
                 lsCondition += ", " + SQLUtil.toSQL(Character.toString(psRecdStat.charAt(lnCtr)));
@@ -197,6 +262,19 @@ public class Branch implements GRecord{
     @Override
     public Model_Branch getModel() {
         return poModel;
+    }
+    
+    
+    public Province GetTownID(String fsPrimaryKey, boolean fbByCode) {
+        Province instance = new Province(poGRider, fbByCode);
+        instance.openRecord(fsPrimaryKey);
+        return instance;
+    }
+    
+    public Company GetCompanyID(String fsPrimaryKey, boolean fbByCode) {
+        Company instance = new Company(poGRider, fbByCode);
+        instance.openRecord(fsPrimaryKey);
+        return instance;
     }
     
 }
