@@ -1,5 +1,10 @@
 package org.guanzon.cas.parameters;
 
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.util.ArrayList;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import org.guanzon.appdriver.agent.ShowDialogFX;
 import org.guanzon.appdriver.base.GRider;
 import org.guanzon.appdriver.base.MiscUtil;
@@ -17,6 +22,7 @@ public class Company implements GRecord {
     String psRecdStat;
 
     Model_Company poModel;
+    ArrayList<Model_Company> poModelList = new ArrayList<>();
     JSONObject poJSON;
 
     public Company(GRider foGRider, boolean fbWthParent) {
@@ -188,5 +194,51 @@ public class Company implements GRecord {
     @Override
     public Model_Company getModel() {
         return poModel;
+    }
+
+    public JSONObject loadModelList() {
+        JSONObject loJSON = new JSONObject();
+        try {
+            String lsCondition = "";
+            if (psRecdStat.length() > 1) {
+                for (int lnCtr = 0; lnCtr <= psRecdStat.length() - 1; lnCtr++) {
+                    lsCondition += ", " + SQLUtil.toSQL(Character.toString(psRecdStat.charAt(lnCtr)));
+                }
+
+                lsCondition = "cRecdStat IN (" + lsCondition.substring(2) + ")";
+            } else {
+                lsCondition = "cRecdStat = " + SQLUtil.toSQL(psRecdStat);
+            }
+            String lsSQL = MiscUtil.addCondition(poModel.makeSelectSQL(), lsCondition);
+
+            ResultSet loRS = poGRider.executeQuery(lsSQL);
+
+            while (loRS.next()) {
+                Model_Company List = new Model_Company(poGRider);
+                List.openRecord(loRS.getString("sCompnyCd"));
+                poModelList.add(List);
+
+            }
+
+            if (poModelList.size() != 0) {
+                loJSON.put("result", "success");
+                loJSON.put("message", "Record loaded successfully.");
+                return loJSON;
+            } else {
+                loJSON.put("result", "error");
+                loJSON.put("message", "No record loaded to the list");
+                return loJSON;
+            }
+
+        } catch (SQLException ex) {
+            Logger.getLogger(Company.class.getName()).log(Level.SEVERE, null, ex);
+            loJSON.put("result", "error");
+            loJSON.put("message", ex.getMessage());
+            return loJSON;
+        }
+    }
+
+    public ArrayList<Model_Company> getModelList() {
+        return poModelList;
     }
 }

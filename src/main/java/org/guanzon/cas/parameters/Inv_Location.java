@@ -1,5 +1,10 @@
 package org.guanzon.cas.parameters;
 
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.util.ArrayList;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import org.guanzon.appdriver.agent.ShowDialogFX;
 import org.guanzon.appdriver.base.GRider;
 import org.guanzon.appdriver.base.MiscUtil;
@@ -17,6 +22,7 @@ public class Inv_Location implements GRecord {
     String psRecdStat;
 
     Model_Inv_Location poModel;
+    ArrayList<Model_Inv_Location> poModelList = new ArrayList<>();
     JSONObject poJSON;
 
     public Inv_Location(GRider foGRider, boolean fbWthParent) {
@@ -188,5 +194,51 @@ public class Inv_Location implements GRecord {
     @Override
     public Model_Inv_Location getModel() {
         return poModel;
+    }
+
+    public JSONObject loadModelList() {
+        JSONObject loJSON = new JSONObject();
+        try {
+            String lsCondition = "";
+            if (psRecdStat.length() > 1) {
+                for (int lnCtr = 0; lnCtr <= psRecdStat.length() - 1; lnCtr++) {
+                    lsCondition += ", " + SQLUtil.toSQL(Character.toString(psRecdStat.charAt(lnCtr)));
+                }
+
+                lsCondition = "cRecdStat IN (" + lsCondition.substring(2) + ")";
+            } else {
+                lsCondition = "cRecdStat = " + SQLUtil.toSQL(psRecdStat);
+            }
+            String lsSQL = MiscUtil.addCondition(poModel.makeSelectSQL(), lsCondition);
+
+            ResultSet loRS = poGRider.executeQuery(lsSQL);
+
+            while (loRS.next()) {
+                Model_Inv_Location List = new Model_Inv_Location(poGRider);
+                List.openRecord(loRS.getString("sCompnyCd"));
+                poModelList.add(List);
+
+            }
+
+            if (poModelList.size() != 0) {
+                loJSON.put("result", "success");
+                loJSON.put("message", "Record loaded successfully.");
+                return loJSON;
+            } else {
+                loJSON.put("result", "error");
+                loJSON.put("message", "No record loaded to the list");
+                return loJSON;
+            }
+
+        } catch (SQLException ex) {
+            Logger.getLogger(Inv_Location.class.getName()).log(Level.SEVERE, null, ex);
+            loJSON.put("result", "error");
+            loJSON.put("message", ex.getMessage());
+            return loJSON;
+        }
+    }
+
+    public ArrayList<Model_Inv_Location> getModelList() {
+        return poModelList;
     }
 }

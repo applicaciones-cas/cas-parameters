@@ -1,9 +1,10 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
- */
 package org.guanzon.cas.parameters;
 
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.util.ArrayList;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import org.guanzon.appdriver.agent.ShowDialogFX;
 import org.guanzon.appdriver.base.GRider;
 import org.guanzon.appdriver.base.MiscUtil;
@@ -11,24 +12,23 @@ import org.guanzon.appdriver.base.SQLUtil;
 import org.guanzon.appdriver.constant.EditMode;
 import org.guanzon.appdriver.iface.GRecord;
 import org.guanzon.cas.model.parameters.Model_Branch;
-import org.guanzon.cas.model.parameters.Model_Brand;
 import org.json.simple.JSONObject;
 
 /**
  *
- * @author user
+ * @author luke
  */
-public class Branch implements GRecord{
-    
+public class Branch implements GRecord {
+
     GRider poGRider;
     boolean pbWthParent;
     int pnEditMode;
     String psRecdStat;
 
     Model_Branch poModel;
+    ArrayList<Model_Branch> poModelList = new ArrayList<>();
     JSONObject poJSON;
 
-        
     public Branch(GRider foGRider, boolean fbWthParent) {
         poGRider = foGRider;
         pbWthParent = fbWthParent;
@@ -36,7 +36,7 @@ public class Branch implements GRecord{
         poModel = new Model_Branch(foGRider);
         pnEditMode = EditMode.UNKNOWN;
     }
-    
+
     @Override
     public int getEditMode() {
         return pnEditMode;
@@ -112,9 +112,7 @@ public class Branch implements GRecord{
 
         return poJSON;
     }
-    
-        
-    
+
     public JSONObject searchDetail(String fsColumn, String fsValue, boolean fbByCode) {
 
         String lsHeader = "";
@@ -134,8 +132,6 @@ public class Branch implements GRecord{
                     System.out.println((String) loProvince.getMaster("sProvIDxx"));
                     System.out.println((String) loProvince.getMaster("sProvName"));
                     poModel.setTownID((String) loProvince.getMaster("sProvIDxx"));
-                    
-                    
 
                     return loJSON;
 
@@ -145,9 +141,7 @@ public class Branch implements GRecord{
                     loJSON.put("message", "No Transaction found.");
                     return loJSON;
                 }
-            
-           
-                
+
             case "sCompnyID": //3 //8-xCategrNm //9-xInvTypNm
                 Company loCompany = new Company(poGRider, true);
                 loCompany.setRecordStatus(psRecdStat);
@@ -157,8 +151,6 @@ public class Branch implements GRecord{
                     System.out.println((String) loCompany.getMaster("sCompnyID"));
                     System.out.println((String) loCompany.getMaster("sCompnyNm"));
                     poModel.setCompanyID((String) loCompany.getMaster("sCompnyID"));
-                    
-                    
 
                     return loJSON;
 
@@ -168,7 +160,6 @@ public class Branch implements GRecord{
                     loJSON.put("message", "No Transaction found.");
                     return loJSON;
                 }
-                
 
             default:
                 return null;
@@ -225,7 +216,7 @@ public class Branch implements GRecord{
     @Override
     public JSONObject searchRecord(String fsValue, boolean fbByCode) {
         String lsCondition = "";
-        if (fsValue == null){
+        if (fsValue == null) {
             fsValue = "";
         }
         if (psRecdStat.length() > 1) {
@@ -263,18 +254,62 @@ public class Branch implements GRecord{
     public Model_Branch getModel() {
         return poModel;
     }
-    
-    
+
     public Province GetTownID(String fsPrimaryKey, boolean fbByCode) {
         Province instance = new Province(poGRider, fbByCode);
         instance.openRecord(fsPrimaryKey);
         return instance;
     }
-    
+
     public Company GetCompanyID(String fsPrimaryKey, boolean fbByCode) {
         Company instance = new Company(poGRider, fbByCode);
         instance.openRecord(fsPrimaryKey);
         return instance;
     }
-    
+
+    public JSONObject loadModelList() {
+        JSONObject loJSON = new JSONObject();
+        try {
+            String lsCondition = "";
+            if (psRecdStat.length() > 1) {
+                for (int lnCtr = 0; lnCtr <= psRecdStat.length() - 1; lnCtr++) {
+                    lsCondition += ", " + SQLUtil.toSQL(Character.toString(psRecdStat.charAt(lnCtr)));
+                }
+
+                lsCondition = "cRecdStat IN (" + lsCondition.substring(2) + ")";
+            } else {
+                lsCondition = "cRecdStat = " + SQLUtil.toSQL(psRecdStat);
+            }
+            String lsSQL = MiscUtil.addCondition(poModel.makeSelectSQL(), lsCondition);
+
+            ResultSet loRS = poGRider.executeQuery(lsSQL);
+
+            while (loRS.next()) {
+                Model_Branch List = new Model_Branch(poGRider);
+                List.openRecord(loRS.getString("sCompnyCd"));
+                poModelList.add(List);
+
+            }
+
+            if (poModelList.size() != 0) {
+                loJSON.put("result", "success");
+                loJSON.put("message", "Record loaded successfully.");
+                return loJSON;
+            } else {
+                loJSON.put("result", "error");
+                loJSON.put("message", "No record loaded to the list");
+                return loJSON;
+            }
+
+        } catch (SQLException ex) {
+            Logger.getLogger(Branch.class.getName()).log(Level.SEVERE, null, ex);
+            loJSON.put("result", "error");
+            loJSON.put("message", ex.getMessage());
+            return loJSON;
+        }
+    }
+
+    public ArrayList<Model_Branch> getModelList() {
+        return poModelList;
+    }
 }
