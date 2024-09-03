@@ -211,7 +211,7 @@ public class Term implements GRecord {
 
             while (loRS.next()) {
                 Model_Term List = new Model_Term(poGRider);
-                List.openRecord(loRS.getString("sCompnyCd"));
+                List.openRecord(loRS.getString("sTermCode"));
                 poModelList.add(List);
 
             }

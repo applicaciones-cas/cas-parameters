@@ -215,7 +215,7 @@ public class Inv_Type implements GRecord {
 
             while (loRS.next()) {
                 Model_Inv_Type List = new Model_Inv_Type(poGRider);
-                List.openRecord(loRS.getString("sCompnyCd"));
+                List.openRecord(loRS.getString("sInvTypCd"));
                 poModelList.add(List);
 
             }

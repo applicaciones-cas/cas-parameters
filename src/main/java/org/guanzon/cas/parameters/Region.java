@@ -214,7 +214,7 @@ public class Region implements GRecord {
 
             while (loRS.next()) {
                 Model_Region List = new Model_Region(poGRider);
-                List.openRecord(loRS.getString("sCompnyCd"));
+                List.openRecord(loRS.getString("sRegionID"));
                 poModelList.add(List);
 
             }

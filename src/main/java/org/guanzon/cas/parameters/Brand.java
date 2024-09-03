@@ -215,7 +215,7 @@ public class Brand implements GRecord {
 
             while (loRS.next()) {
                 Model_Brand List = new Model_Brand(poGRider);
-                List.openRecord(loRS.getString("sCompnyCd"));
+                List.openRecord(loRS.getString("sBrandCde"));
                 poModelList.add(List);
 
             }

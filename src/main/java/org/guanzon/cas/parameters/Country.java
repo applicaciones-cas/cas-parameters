@@ -215,7 +215,7 @@ public class Country implements GRecord {
 
             while (loRS.next()) {
                 Model_Country List = new Model_Country(poGRider);
-                List.openRecord(loRS.getString("sCompnyCd"));
+                List.openRecord(loRS.getString("sCntryCde"));
                 poModelList.add(List);
 
             }

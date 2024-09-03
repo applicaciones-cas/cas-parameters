@@ -215,7 +215,7 @@ public class Barangay implements GRecord {
 
             while (loRS.next()) {
                 Model_Barangay List = new Model_Barangay(poGRider);
-                List.openRecord(loRS.getString("sCompnyCd"));
+                List.openRecord(loRS.getString("sBrgyIDxx"));
                 poModelList.add(List);
 
             }

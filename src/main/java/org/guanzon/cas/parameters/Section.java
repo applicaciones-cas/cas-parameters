@@ -211,7 +211,7 @@ public class Section implements GRecord {
 
             while (loRS.next()) {
                 Model_Section List = new Model_Section(poGRider);
-                List.openRecord(loRS.getString("sCompnyCd"));
+                List.openRecord(loRS.getString("sSectnIDx"));
                 poModelList.add(List);
 
             }

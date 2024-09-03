@@ -214,7 +214,7 @@ public class Salesman implements GRecord {
 
             while (loRS.next()) {
                 Model_Salesman List = new Model_Salesman(poGRider);
-                List.openRecord(loRS.getString("sCompnyCd"));
+                List.openRecord(loRS.getString("sEmployID"));
                 poModelList.add(List);
 
             }

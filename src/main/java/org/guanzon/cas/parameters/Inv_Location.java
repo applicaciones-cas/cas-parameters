@@ -215,7 +215,7 @@ public class Inv_Location implements GRecord {
 
             while (loRS.next()) {
                 Model_Inv_Location List = new Model_Inv_Location(poGRider);
-                List.openRecord(loRS.getString("sCompnyCd"));
+                List.openRecord(loRS.getString("sLocatnCd"));
                 poModelList.add(List);
 
             }

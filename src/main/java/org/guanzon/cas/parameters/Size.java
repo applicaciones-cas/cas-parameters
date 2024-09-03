@@ -211,7 +211,7 @@ public class Size implements GRecord {
 
             while (loRS.next()) {
                 Model_Size List = new Model_Size(poGRider);
-                List.openRecord(loRS.getString("sCompnyCd"));
+                List.openRecord(loRS.getString("sSizeIDxx"));
                 poModelList.add(List);
 
             }

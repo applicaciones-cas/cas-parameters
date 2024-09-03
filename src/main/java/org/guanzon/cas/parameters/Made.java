@@ -214,7 +214,7 @@ public class Made implements GRecord {
 
             while (loRS.next()) {
                 Model_Made List = new Model_Made(poGRider);
-                List.openRecord(loRS.getString("sCompnyCd"));
+                List.openRecord(loRS.getString("sMadeIDxx"));
                 poModelList.add(List);
 
             }

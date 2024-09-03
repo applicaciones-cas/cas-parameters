@@ -215,7 +215,7 @@ public class Color implements GRecord {
 
             while (loRS.next()) {
                 Model_Color List = new Model_Color(poGRider);
-                List.openRecord(loRS.getString("sCompnyCd"));
+                List.openRecord(loRS.getString("sColorIDx"));
                 poModelList.add(List);
 
             }

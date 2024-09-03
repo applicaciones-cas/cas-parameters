@@ -215,7 +215,7 @@ public class Category_Level2 implements GRecord {
 
             while (loRS.next()) {
                 Model_Category_Level2 List = new Model_Category_Level2(poGRider);
-                List.openRecord(loRS.getString("sCompnyCd"));
+                List.openRecord(loRS.getString("sCategrCd"));
                 poModelList.add(List);
 
             }

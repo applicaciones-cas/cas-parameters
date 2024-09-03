@@ -215,7 +215,7 @@ public class Department implements GRecord {
 
             while (loRS.next()) {
                 Model_Department List = new Model_Department(poGRider);
-                List.openRecord(loRS.getString("sCompnyCd"));
+                List.openRecord(loRS.getString("sDeptIDxx"));
                 poModelList.add(List);
 
             }

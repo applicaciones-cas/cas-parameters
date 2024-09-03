@@ -215,7 +215,7 @@ public class Company implements GRecord {
 
             while (loRS.next()) {
                 Model_Company List = new Model_Company(poGRider);
-                List.openRecord(loRS.getString("sCompnyCd"));
+                List.openRecord(loRS.getString("sCompnyID"));
                 poModelList.add(List);
 
             }

@@ -215,7 +215,7 @@ public class Labor implements GRecord {
 
             while (loRS.next()) {
                 Model_Labor List = new Model_Labor(poGRider);
-                List.openRecord(loRS.getString("sCompnyCd"));
+                List.openRecord(loRS.getString("sLaborIDx"));
                 poModelList.add(List);
 
             }

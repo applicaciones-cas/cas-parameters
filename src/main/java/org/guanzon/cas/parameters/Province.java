@@ -214,7 +214,7 @@ public class Province implements GRecord {
 
             while (loRS.next()) {
                 Model_Province List = new Model_Province(poGRider);
-                List.openRecord(loRS.getString("sCompnyCd"));
+                List.openRecord(loRS.getString("sProvIDxx"));
                 poModelList.add(List);
 
             }

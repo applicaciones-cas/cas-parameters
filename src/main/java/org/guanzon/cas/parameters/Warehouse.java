@@ -211,7 +211,7 @@ public class Warehouse implements GRecord {
 
             while (loRS.next()) {
                 Model_Warehouse List = new Model_Warehouse(poGRider);
-                List.openRecord(loRS.getString("sCompnyCd"));
+                List.openRecord(loRS.getString("sWHouseID"));
                 poModelList.add(List);
 
             }

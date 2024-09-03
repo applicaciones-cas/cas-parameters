@@ -214,7 +214,7 @@ public class Category implements GRecord {
 
             while (loRS.next()) {
                 Model_Category List = new Model_Category(poGRider);
-                List.openRecord(loRS.getString("sCompnyCd"));
+                List.openRecord(loRS.getString("sCategrCd"));
                 poModelList.add(List);
 
             }

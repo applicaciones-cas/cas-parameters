@@ -211,7 +211,7 @@ public class Banks implements GRecord {
 
             while (loRS.next()) {
                 Model_Banks List = new Model_Banks(poGRider);
-                List.openRecord(loRS.getString("sCompnyCd"));
+                List.openRecord(loRS.getString("sBankIDxx"));
                 poModelList.add(List);
 
             }

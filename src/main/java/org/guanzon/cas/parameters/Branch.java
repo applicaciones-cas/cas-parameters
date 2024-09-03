@@ -286,7 +286,7 @@ public class Branch implements GRecord {
 
             while (loRS.next()) {
                 Model_Branch List = new Model_Branch(poGRider);
-                List.openRecord(loRS.getString("sCompnyCd"));
+                List.openRecord(loRS.getString("sBranchCd"));
                 poModelList.add(List);
 
             }

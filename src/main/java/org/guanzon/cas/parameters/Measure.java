@@ -211,7 +211,7 @@ public class Measure implements GRecord {
 
             while (loRS.next()) {
                 Model_Measure List = new Model_Measure(poGRider);
-                List.openRecord(loRS.getString("sCompnyCd"));
+                List.openRecord(loRS.getString("sMeasurID"));
                 poModelList.add(List);
 
             }

@@ -214,7 +214,7 @@ public class Model implements GRecord {
 
             while (loRS.next()) {
                 Model_Model List = new Model_Model(poGRider);
-                List.openRecord(loRS.getString("sCompnyCd"));
+                List.openRecord(loRS.getString("sModelCde"));
                 poModelList.add(List);
 
             }

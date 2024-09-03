@@ -214,7 +214,7 @@ public class Relationship implements GRecord {
 
             while (loRS.next()) {
                 Model_Relationship List = new Model_Relationship(poGRider);
-                List.openRecord(loRS.getString("sCompnyCd"));
+                List.openRecord(loRS.getString("sRelatnID"));
                 poModelList.add(List);
 
             }
