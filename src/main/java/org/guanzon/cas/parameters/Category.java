@@ -174,7 +174,7 @@ public class Category implements GRecord {
 
         if (pbWthParent) {
             if (!System.getProperty("store.inventory.industry").isEmpty()) {
-                lsSQL = MiscUtil.addCondition(lsSQL, " sCategrCd IN " + CommonUtils.getParameter(System.getProperty("store.inventory.industry")));
+                lsSQL = MiscUtil.addCondition(lsSQL, "AND sCategrCd IN " + CommonUtils.getParameter(System.getProperty("store.inventory.industry")));
             }
         }
 
