@@ -242,4 +242,52 @@ public class Inv_Location implements GRecord {
     public ArrayList<Model_Inv_Location> getModelList() {
         return poModelList;
     }
+
+    public JSONObject searchMaster(String fsColumn, String fsValue, boolean fbByCode) {
+
+        JSONObject loJSON;
+
+        switch (fsColumn) {
+
+            case "sWHouseID": //3
+                Warehouse loWarehouse = new Warehouse(poGRider, true);
+                loWarehouse.setRecordStatus(psRecdStat);
+                loJSON = loWarehouse.searchRecord(fsValue, fbByCode);
+
+                if (loJSON != null) {
+                    loJSON = poModel.setWarehouseID((String) loWarehouse.getMaster("sWHouseID"));
+                    loJSON = poModel.setWarehouseName((String) loWarehouse.getMaster("sWHouseNm"));
+                } else {
+                    loJSON = new JSONObject();
+                    loJSON.put("result", "error");
+                    loJSON.put("message", "No record found.");
+                    return loJSON;
+                }
+                return loJSON;
+            case "sSectnIDx": // 4
+                Section loSection = new Section(poGRider, true);
+                loSection.setRecordStatus(psRecdStat);
+                loJSON = loSection.searchRecord(fsValue, fbByCode);
+
+                if (loJSON != null) {
+                    loJSON = poModel.setSectionID((String) loSection.getMaster("sSectnIDx"));
+                    loJSON = poModel.setSectionName((String) loSection.getMaster("sSectnNme"));
+                } else {
+                    loJSON = new JSONObject();
+                    loJSON.put("result", "error");
+                    loJSON.put("message", "No record found.");
+                    return loJSON;
+                }
+                return loJSON;
+
+            default:
+                return null;
+
+        }
+    }
+
+    public JSONObject searchMaster(int fnColumn, String fsValue, boolean fbByCode) {
+        return searchMaster(poModel.getColumn(fnColumn), fsValue, fbByCode);
+
+    }
 }

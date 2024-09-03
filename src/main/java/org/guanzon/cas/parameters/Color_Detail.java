@@ -242,4 +242,38 @@ public class Color_Detail implements GRecord {
     public ArrayList<Model_Color_Detail> getModelList() {
         return poModelList;
     }
+
+    public JSONObject searchMaster(String fsColumn, String fsValue, boolean fbByCode) {
+
+        JSONObject loJSON;
+
+        switch (fsColumn) {
+
+            case "sColorCde": //3
+                Color loColor  = new Color(poGRider, true);
+                loColor.setRecordStatus(psRecdStat);
+                loJSON = loColor.searchRecord(fsValue, fbByCode);
+
+                if (loJSON != null) {
+                    loJSON = poModel.setColorCode((String) loColor.getMaster("sColorCde"));
+                    loJSON = poModel.setColorNmeMain((String) loColor.getMaster("sDescript"));
+                } else {
+                    loJSON = new JSONObject();
+                    loJSON.put("result", "error");
+                    loJSON.put("message", "No record found.");
+                    return loJSON;
+                }
+                return loJSON;
+
+            default:
+                return null;
+
+        }
+    }
+
+    public JSONObject searchMaster(int fnColumn, String fsValue, boolean fbByCode) {
+        return searchMaster(poModel.getColumn(fnColumn), fsValue, fbByCode);
+
+    }
 }
+
