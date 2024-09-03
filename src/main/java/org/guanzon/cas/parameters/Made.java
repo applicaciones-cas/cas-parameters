@@ -22,7 +22,7 @@ public class Made implements GRecord {
     String psRecdStat;
 
     Model_Made poModel;
-    ArrayList<Model_Made> poModelList = new ArrayList<>();
+    ArrayList<Model_Made> poModelList;
     JSONObject poJSON;
 
     public Made(GRider foGRider, boolean fbWthParent) {
@@ -196,6 +196,7 @@ public class Made implements GRecord {
     }
 
     public JSONObject loadModelList() {
+        poModelList = new ArrayList<>();
         JSONObject loJSON = new JSONObject();
         try {
             String lsCondition = "";

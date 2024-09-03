@@ -26,7 +26,7 @@ public class Branch implements GRecord {
     String psRecdStat;
 
     Model_Branch poModel;
-    ArrayList<Model_Branch> poModelList = new ArrayList<>();
+    ArrayList<Model_Branch> poModelList ;
     JSONObject poJSON;
 
     public Branch(GRider foGRider, boolean fbWthParent) {
@@ -268,6 +268,7 @@ public class Branch implements GRecord {
     }
 
     public JSONObject loadModelList() {
+        poModelList = new ArrayList<>();
         JSONObject loJSON = new JSONObject();
         try {
             String lsCondition = "";

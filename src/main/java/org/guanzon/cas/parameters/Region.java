@@ -22,7 +22,7 @@ public class Region implements GRecord {
     String psRecdStat;
 
     Model_Region poModel;
-    ArrayList<Model_Region> poModelList = new ArrayList<>();
+    ArrayList<Model_Region> poModelList;
     JSONObject poJSON;
 
     public Region(GRider foGRider, boolean fbWthParent) {
@@ -196,6 +196,7 @@ public class Region implements GRecord {
     }
 
     public JSONObject loadModelList() {
+        poModelList = new ArrayList<>();
         JSONObject loJSON = new JSONObject();
         try {
             String lsCondition = "";

@@ -22,7 +22,7 @@ public class Barangay implements GRecord {
     String psRecdStat;
 
     Model_Barangay poModel;
-    ArrayList<Model_Barangay> poModelList = new ArrayList<>();
+    ArrayList<Model_Barangay> poModelList;
     JSONObject poJSON;
 
     public Barangay(GRider foGRider, boolean fbWthParent) {
@@ -197,6 +197,7 @@ public class Barangay implements GRecord {
     }
 
     public JSONObject loadModelList() {
+        poModelList = new ArrayList<>();
         JSONObject loJSON = new JSONObject();
         try {
             String lsCondition = "";

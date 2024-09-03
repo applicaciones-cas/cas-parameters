@@ -22,7 +22,7 @@ public class Category_Level3 implements GRecord {
     String psRecdStat;
 
     Model_Category_Level3 poModel;
-    ArrayList<Model_Category_Level3> poModelList = new ArrayList<>();
+    ArrayList<Model_Category_Level3> poModelList;
     JSONObject poJSON;
 
     public Category_Level3(GRider foGRider, boolean fbWthParent) {
@@ -197,6 +197,7 @@ public class Category_Level3 implements GRecord {
     }
 
     public JSONObject loadModelList() {
+        poModelList = new ArrayList<>();
         JSONObject loJSON = new JSONObject();
         try {
             String lsCondition = "";

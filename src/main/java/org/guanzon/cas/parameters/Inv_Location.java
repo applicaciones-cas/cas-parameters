@@ -22,7 +22,7 @@ public class Inv_Location implements GRecord {
     String psRecdStat;
 
     Model_Inv_Location poModel;
-    ArrayList<Model_Inv_Location> poModelList = new ArrayList<>();
+    ArrayList<Model_Inv_Location> poModelList;
     JSONObject poJSON;
 
     public Inv_Location(GRider foGRider, boolean fbWthParent) {
@@ -197,6 +197,7 @@ public class Inv_Location implements GRecord {
     }
 
     public JSONObject loadModelList() {
+        poModelList = new ArrayList<>();
         JSONObject loJSON = new JSONObject();
         try {
             String lsCondition = "";

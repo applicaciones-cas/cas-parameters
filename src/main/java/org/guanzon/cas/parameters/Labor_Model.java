@@ -22,7 +22,7 @@ public class Labor_Model implements GRecord {
     String psRecdStat;
 
     Model_Labor_Model poModel;
-    ArrayList<Model_Labor_Model> poModelList = new ArrayList<>();
+    ArrayList<Model_Labor_Model> poModelList;
     JSONObject poJSON;
 
     public Labor_Model(GRider foGRider, boolean fbWthParent) {
@@ -196,6 +196,7 @@ public class Labor_Model implements GRecord {
     }
 
     public JSONObject loadModelList() {
+        poModelList = new ArrayList<>();
         JSONObject loJSON = new JSONObject();
         try {
             String lsCondition = "";

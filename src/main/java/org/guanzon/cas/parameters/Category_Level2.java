@@ -22,7 +22,7 @@ public class Category_Level2 implements GRecord {
     String psRecdStat;
 
     Model_Category_Level2 poModel;
-    ArrayList<Model_Category_Level2> poModelList = new ArrayList<>();
+    ArrayList<Model_Category_Level2> poModelList;
     JSONObject poJSON;
 
     public Category_Level2(GRider foGRider, boolean fbWthParent) {
@@ -197,6 +197,7 @@ public class Category_Level2 implements GRecord {
     }
 
     public JSONObject loadModelList() {
+        poModelList = new ArrayList<>();
         JSONObject loJSON = new JSONObject();
         try {
             String lsCondition = "";
@@ -240,5 +241,53 @@ public class Category_Level2 implements GRecord {
 
     public ArrayList<Model_Category_Level2> getModelList() {
         return poModelList;
+    }
+
+    public JSONObject searchMaster(String fsColumn, String fsValue, boolean fbByCode) {
+
+        JSONObject loJSON;
+
+        switch (fsColumn) {
+
+            case "sInvTypCd": //3
+                Inv_Type loInvType = new Inv_Type(poGRider, true);
+                loInvType.setRecordStatus(psRecdStat);
+                loJSON = loInvType.searchRecord(fsValue, fbByCode);
+
+                if (loJSON != null) {
+                    loJSON = poModel.setInventoryTypeCode((String) loInvType.getMaster("sInvTypCd"));
+                    loJSON = poModel.setInvTypeName((String) loInvType.getMaster("sDescript"));
+                } else {
+                    loJSON = new JSONObject();
+                    loJSON.put("result", "error");
+                    loJSON.put("message", "No record found.");
+                    return loJSON;
+                }
+                return loJSON;
+            case "sMainCatx": //4
+                Category loCategory = new Category(poGRider, false);
+                loCategory.setRecordStatus(psRecdStat);
+                loJSON = loCategory.searchRecord(fsValue, fbByCode);
+
+                if (loJSON != null) {
+                    loJSON = poModel.setMainCategory((String) loCategory.getMaster("sCategrCd"));
+                    loJSON = poModel.setMainCategoryName((String) loCategory.getMaster("sDescript"));
+                } else {
+                    loJSON = new JSONObject();
+                    loJSON.put("result", "error");
+                    loJSON.put("message", "No record found.");
+                    return loJSON;
+                }
+                return loJSON;
+
+            default:
+                return null;
+
+        }
+    }
+
+    public JSONObject searchMaster(int fnColumn, String fsValue, boolean fbByCode) {
+        return searchMaster(poModel.getColumn(fnColumn), fsValue, fbByCode);
+
     }
 }

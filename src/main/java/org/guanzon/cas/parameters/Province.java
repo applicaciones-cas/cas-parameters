@@ -22,7 +22,7 @@ public class Province implements GRecord {
     String psRecdStat;
 
     Model_Province poModel;
-    ArrayList<Model_Province> poModelList = new ArrayList<>();
+    ArrayList<Model_Province> poModelList;
     JSONObject poJSON;
 
     public Province(GRider foGRider, boolean fbWthParent) {
@@ -76,7 +76,6 @@ public class Province implements GRecord {
     @Override
     public JSONObject updateRecord() {
         JSONObject loJSON = new JSONObject();
-
         if (poModel.getEditMode() == EditMode.UPDATE) {
             loJSON.put("result", "success");
             loJSON.put("message", "Edit mode has changed to update.");
@@ -196,6 +195,7 @@ public class Province implements GRecord {
     }
 
     public JSONObject loadModelList() {
+        poModelList = new ArrayList<>();
         JSONObject loJSON = new JSONObject();
         try {
             String lsCondition = "";
@@ -239,5 +239,36 @@ public class Province implements GRecord {
 
     public ArrayList<Model_Province> getModelList() {
         return poModelList;
+    }
+
+    public JSONObject searchMaster(String fsColumn, String fsValue, boolean fbByCode) {
+        JSONObject loJSON;
+        switch (fsColumn) {
+
+            case "sRegionID": //3
+                Region loRegion = new Region(poGRider, true);
+                loRegion.setRecordStatus(psRecdStat);
+                loJSON = loRegion.searchRecord(fsValue, fbByCode);
+
+                if (loJSON != null) {
+                    loJSON = poModel.setRegionID((String) loRegion.getMaster("sRegionID"));
+                    loJSON = poModel.setRegionName((String) loRegion.getMaster("sRegionNm"));
+                } else {
+                    loJSON = new JSONObject();
+                    loJSON.put("result", "error");
+                    loJSON.put("message", "No record found.");
+                    return loJSON;
+                }
+                return loJSON;
+
+            default:
+                return null;
+
+        }
+    }
+
+    public JSONObject searchMaster(int fnColumn, String fsValue, boolean fbByCode) {
+        return searchMaster(poModel.getColumn(fnColumn), fsValue, fbByCode);
+
     }
 }

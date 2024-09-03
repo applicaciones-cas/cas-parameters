@@ -22,7 +22,7 @@ public class Banks_Branches implements GRecord {
     String psRecdStat;
 
     Model_Banks_Branches poModel;
-    ArrayList<Model_Banks_Branches> poModelList = new ArrayList<>();
+    ArrayList<Model_Banks_Branches> poModelList;
     JSONObject poJSON;
 
     public Banks_Branches(GRider foGRider, boolean fbWthParent) {
@@ -197,6 +197,8 @@ public class Banks_Branches implements GRecord {
     }
 
     public JSONObject loadModelList() {
+
+        poModelList = new ArrayList<>();
         JSONObject loJSON = new JSONObject();
         try {
             String lsCondition = "";
@@ -240,5 +242,42 @@ public class Banks_Branches implements GRecord {
 
     public ArrayList<Model_Banks_Branches> getModelList() {
         return poModelList;
+    }
+
+    public JSONObject searchMaster(String fsColumn, String fsValue, boolean fbByCode) {
+
+        JSONObject loJSON;
+
+        switch (fsColumn) {
+
+            case "sBankIDxx": //4
+                Banks loBanks = new Banks(poGRider, true);
+                loBanks.setRecordStatus(psRecdStat);
+                loJSON = loBanks.searchRecord(fsValue, fbByCode);
+
+                if (loJSON != null) {
+                    loJSON = poModel.setBanksID((String) loBanks.getMaster("sBankIDxx"));
+                    loJSON = poModel.setBankName((String) loBanks.getMaster("sBankName"));
+                    loJSON = poModel.setBankCode((String) loBanks.getMaster("sBankCode"));
+                } else {
+                    loJSON = new JSONObject();
+                    loJSON.put("result", "error");
+                    loJSON.put("message", "No record found.");
+                    return loJSON;
+                }
+                return loJSON;
+//            case "sTownIDxx": // 7
+//
+//                return loJSON;
+
+            default:
+                return null;
+
+        }
+    }
+
+    public JSONObject searchMaster(int fnColumn, String fsValue, boolean fbByCode) {
+        return searchMaster(poModel.getColumn(fnColumn), fsValue, fbByCode);
+
     }
 }

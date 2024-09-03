@@ -22,7 +22,7 @@ public class Inv_Type implements GRecord {
     String psRecdStat;
 
     Model_Inv_Type poModel;
-    ArrayList<Model_Inv_Type> poModelList = new ArrayList<>();
+    ArrayList<Model_Inv_Type> poModelList;
     JSONObject poJSON;
 
     public Inv_Type(GRider foGRider, boolean fbWthParent) {
@@ -197,6 +197,7 @@ public class Inv_Type implements GRecord {
     }
 
     public JSONObject loadModelList() {
+        poModelList = new ArrayList<>();
         JSONObject loJSON = new JSONObject();
         try {
             String lsCondition = "";

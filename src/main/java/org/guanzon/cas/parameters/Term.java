@@ -22,7 +22,7 @@ public class Term implements GRecord {
     String psRecdStat;
 
     Model_Term poModel;
-    ArrayList<Model_Term> poModelList = new ArrayList<>();
+    ArrayList<Model_Term> poModelList;
     JSONObject poJSON;
 
     public Term(GRider foGRider, boolean fbWthParent) {
@@ -193,6 +193,7 @@ public class Term implements GRecord {
     }
 
     public JSONObject loadModelList() {
+        poModelList = new ArrayList<>();
         JSONObject loJSON = new JSONObject();
         try {
             String lsCondition = "";

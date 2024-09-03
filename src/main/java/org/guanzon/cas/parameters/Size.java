@@ -22,7 +22,7 @@ public class Size implements GRecord {
     String psRecdStat;
 
     Model_Size poModel;
-    ArrayList<Model_Size> poModelList = new ArrayList<>();
+    ArrayList<Model_Size> poModelList;
     JSONObject poJSON;
 
     public Size(GRider foGRider, boolean fbWthParent) {
@@ -193,6 +193,7 @@ public class Size implements GRecord {
     }
 
     public JSONObject loadModelList() {
+        poModelList = new ArrayList<>();
         JSONObject loJSON = new JSONObject();
         try {
             String lsCondition = "";

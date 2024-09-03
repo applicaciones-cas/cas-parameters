@@ -22,7 +22,7 @@ public class Color implements GRecord {
     String psRecdStat;
 
     Model_Color poModel;
-    ArrayList<Model_Color> poModelList = new ArrayList<>();
+    ArrayList<Model_Color> poModelList;
     JSONObject poJSON;
 
     public Color(GRider foGRider, boolean fbWthParent) {
@@ -197,6 +197,7 @@ public class Color implements GRecord {
     }
 
     public JSONObject loadModelList() {
+        poModelList = new ArrayList<>();
         JSONObject loJSON = new JSONObject();
         try {
             String lsCondition = "";
@@ -215,7 +216,7 @@ public class Color implements GRecord {
 
             while (loRS.next()) {
                 Model_Color List = new Model_Color(poGRider);
-                List.openRecord(loRS.getString("sColorIDx"));
+                List.openRecord(loRS.getString("sColorCde"));
                 poModelList.add(List);
 
             }

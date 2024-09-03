@@ -22,7 +22,7 @@ public class Measure implements GRecord {
     String psRecdStat;
 
     Model_Measure poModel;
-    ArrayList<Model_Measure> poModelList = new ArrayList<>();
+    ArrayList<Model_Measure> poModelList;
     JSONObject poJSON;
 
     public Measure(GRider foGRider, boolean fbWthParent) {
@@ -193,6 +193,7 @@ public class Measure implements GRecord {
     }
 
     public JSONObject loadModelList() {
+        poModelList = new ArrayList<>();
         JSONObject loJSON = new JSONObject();
         try {
             String lsCondition = "";

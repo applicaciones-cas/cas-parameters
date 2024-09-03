@@ -22,7 +22,7 @@ public class Department implements GRecord {
     String psRecdStat;
 
     Model_Department poModel;
-    ArrayList<Model_Department> poModelList = new ArrayList<>();
+    ArrayList<Model_Department> poModelList;
     JSONObject poJSON;
 
     public Department(GRider foGRider, boolean fbWthParent) {
@@ -197,6 +197,7 @@ public class Department implements GRecord {
     }
 
     public JSONObject loadModelList() {
+        poModelList = new ArrayList<>();
         JSONObject loJSON = new JSONObject();
         try {
             String lsCondition = "";

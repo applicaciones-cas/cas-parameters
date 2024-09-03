@@ -22,7 +22,7 @@ public class Relationship implements GRecord {
     String psRecdStat;
 
     Model_Relationship poModel;
-    ArrayList<Model_Relationship> poModelList = new ArrayList<>();
+    ArrayList<Model_Relationship> poModelList;
     JSONObject poJSON;
 
     public Relationship(GRider foGRider, boolean fbWthParent) {
@@ -196,6 +196,7 @@ public class Relationship implements GRecord {
     }
 
     public JSONObject loadModelList() {
+        poModelList = new ArrayList<>();
         JSONObject loJSON = new JSONObject();
         try {
             String lsCondition = "";

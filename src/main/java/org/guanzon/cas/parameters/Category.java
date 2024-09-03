@@ -6,6 +6,7 @@ import java.util.ArrayList;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import org.guanzon.appdriver.agent.ShowDialogFX;
+import org.guanzon.appdriver.base.CommonUtils;
 import org.guanzon.appdriver.base.GRider;
 import org.guanzon.appdriver.base.MiscUtil;
 import org.guanzon.appdriver.base.SQLUtil;
@@ -22,7 +23,7 @@ public class Category implements GRecord {
     String psRecdStat;
 
     Model_Category poModel;
-    ArrayList<Model_Category> poModelList = new ArrayList<>();
+    ArrayList<Model_Category> poModelList;
     JSONObject poJSON;
 
     public Category(GRider foGRider, boolean fbWthParent) {
@@ -169,7 +170,13 @@ public class Category implements GRecord {
             lsCondition = "cRecdStat = " + SQLUtil.toSQL(psRecdStat);
         }
 
-        String lsSQL = MiscUtil.addCondition(poModel.getSQL(), lsCondition);
+        String lsSQL = MiscUtil.addCondition(poModel.makeSelectSQL(), lsCondition);
+
+        if (pbWthParent) {
+            if (!System.getProperty("store.inventory.industry").isEmpty()) {
+                lsSQL = MiscUtil.addCondition(lsSQL, " sCategrCd IN " + CommonUtils.getParameter(System.getProperty("store.inventory.industry")));
+            }
+        }
 
         poJSON = ShowDialogFX.Search(poGRider,
                 lsSQL,
@@ -196,6 +203,7 @@ public class Category implements GRecord {
     }
 
     public JSONObject loadModelList() {
+        poModelList = new ArrayList<>();
         JSONObject loJSON = new JSONObject();
         try {
             String lsCondition = "";

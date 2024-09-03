@@ -22,7 +22,7 @@ public class Company implements GRecord {
     String psRecdStat;
 
     Model_Company poModel;
-    ArrayList<Model_Company> poModelList = new ArrayList<>();
+    ArrayList<Model_Company> poModelList;
     JSONObject poJSON;
 
     public Company(GRider foGRider, boolean fbWthParent) {
@@ -197,6 +197,7 @@ public class Company implements GRecord {
     }
 
     public JSONObject loadModelList() {
+        poModelList = new ArrayList<>();
         JSONObject loJSON = new JSONObject();
         try {
             String lsCondition = "";
