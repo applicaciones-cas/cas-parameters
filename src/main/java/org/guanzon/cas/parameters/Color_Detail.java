@@ -250,7 +250,7 @@ public class Color_Detail implements GRecord {
         switch (fsColumn) {
 
             case "sColorCde": //3
-                Color loColor  = new Color(poGRider, true);
+                Color loColor = new Color(poGRider, true);
                 loColor.setRecordStatus(psRecdStat);
                 loJSON = loColor.searchRecord(fsValue, fbByCode);
 
@@ -276,4 +276,3 @@ public class Color_Detail implements GRecord {
 
     }
 }
-

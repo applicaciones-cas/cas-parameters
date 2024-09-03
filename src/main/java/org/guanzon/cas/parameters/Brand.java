@@ -22,7 +22,7 @@ public class Brand implements GRecord {
     String psRecdStat;
 
     Model_Brand poModel;
-    ArrayList<Model_Brand> poModelList ;
+    ArrayList<Model_Brand> poModelList;
     JSONObject poJSON;
 
     public Brand(GRider foGRider, boolean fbWthParent) {
