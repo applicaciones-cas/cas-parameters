@@ -1,5 +1,10 @@
 package org.guanzon.cas.parameters;
 
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.util.ArrayList;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import org.guanzon.appdriver.agent.ShowDialogFX;
 import org.guanzon.appdriver.base.GRider;
 import org.guanzon.appdriver.base.MiscUtil;
@@ -17,6 +22,7 @@ public class Province implements GRecord {
     String psRecdStat;
 
     Model_Province poModel;
+    ArrayList<Model_Province> poModelList;
     JSONObject poJSON;
 
     public Province(GRider foGRider, boolean fbWthParent) {
@@ -70,7 +76,6 @@ public class Province implements GRecord {
     @Override
     public JSONObject updateRecord() {
         JSONObject loJSON = new JSONObject();
-
         if (poModel.getEditMode() == EditMode.UPDATE) {
             loJSON.put("result", "success");
             loJSON.put("message", "Edit mode has changed to update.");
@@ -187,5 +192,83 @@ public class Province implements GRecord {
     @Override
     public Model_Province getModel() {
         return poModel;
+    }
+
+    public JSONObject loadModelList() {
+        poModelList = new ArrayList<>();
+        JSONObject loJSON = new JSONObject();
+        try {
+            String lsCondition = "";
+            if (psRecdStat.length() > 1) {
+                for (int lnCtr = 0; lnCtr <= psRecdStat.length() - 1; lnCtr++) {
+                    lsCondition += ", " + SQLUtil.toSQL(Character.toString(psRecdStat.charAt(lnCtr)));
+                }
+
+                lsCondition = "cRecdStat IN (" + lsCondition.substring(2) + ")";
+            } else {
+                lsCondition = "cRecdStat = " + SQLUtil.toSQL(psRecdStat);
+            }
+            String lsSQL = MiscUtil.addCondition(poModel.makeSelectSQL(), lsCondition);
+
+            ResultSet loRS = poGRider.executeQuery(lsSQL);
+
+            while (loRS.next()) {
+                Model_Province List = new Model_Province(poGRider);
+                List.openRecord(loRS.getString("sProvIDxx"));
+                poModelList.add(List);
+
+            }
+
+            if (poModelList.size() != 0) {
+                loJSON.put("result", "success");
+                loJSON.put("message", "Record loaded successfully.");
+                return loJSON;
+            } else {
+                loJSON.put("result", "error");
+                loJSON.put("message", "No record loaded to the list");
+                return loJSON;
+            }
+
+        } catch (SQLException ex) {
+            Logger.getLogger(Province.class.getName()).log(Level.SEVERE, null, ex);
+            loJSON.put("result", "error");
+            loJSON.put("message", ex.getMessage());
+            return loJSON;
+        }
+    }
+
+    public ArrayList<Model_Province> getModelList() {
+        return poModelList;
+    }
+
+    public JSONObject searchMaster(String fsColumn, String fsValue, boolean fbByCode) {
+        JSONObject loJSON;
+        switch (fsColumn) {
+
+            case "sRegionID": //3
+                Region loRegion = new Region(poGRider, true);
+                loRegion.setRecordStatus(psRecdStat);
+                loJSON = loRegion.searchRecord(fsValue, fbByCode);
+
+                if (loJSON != null) {
+                    loJSON = poModel.setRegionID((String) loRegion.getMaster("sRegionID"));
+                    loJSON = poModel.setRegionName((String) loRegion.getMaster("sRegionNm"));
+                } else {
+                    loJSON = new JSONObject();
+                    loJSON.put("result", "error");
+                    loJSON.put("message", "No record found.");
+                    return loJSON;
+                }
+                return loJSON;
+
+            default:
+                return null;
+
+        }
+    }
+
+    public JSONObject searchMaster(int fnColumn, String fsValue, boolean fbByCode) {
+        return searchMaster(poModel.getColumn(fnColumn), fsValue, fbByCode);
+
     }
 }

@@ -1,5 +1,10 @@
 package org.guanzon.cas.parameters;
 
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.util.ArrayList;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import org.guanzon.appdriver.agent.ShowDialogFX;
 import org.guanzon.appdriver.base.GRider;
 import org.guanzon.appdriver.base.MiscUtil;
@@ -17,6 +22,7 @@ public class Color_Detail implements GRecord {
     String psRecdStat;
 
     Model_Color_Detail poModel;
+    ArrayList<Model_Color_Detail> poModelList;
     JSONObject poJSON;
 
     public Color_Detail(GRider foGRider, boolean fbWthParent) {
@@ -188,5 +194,85 @@ public class Color_Detail implements GRecord {
     @Override
     public Model_Color_Detail getModel() {
         return poModel;
+    }
+
+    public JSONObject loadModelList() {
+        poModelList = new ArrayList<>();
+        JSONObject loJSON = new JSONObject();
+        try {
+            String lsCondition = "";
+            if (psRecdStat.length() > 1) {
+                for (int lnCtr = 0; lnCtr <= psRecdStat.length() - 1; lnCtr++) {
+                    lsCondition += ", " + SQLUtil.toSQL(Character.toString(psRecdStat.charAt(lnCtr)));
+                }
+
+                lsCondition = "cRecdStat IN (" + lsCondition.substring(2) + ")";
+            } else {
+                lsCondition = "cRecdStat = " + SQLUtil.toSQL(psRecdStat);
+            }
+            String lsSQL = MiscUtil.addCondition(poModel.makeSelectSQL(), lsCondition);
+
+            ResultSet loRS = poGRider.executeQuery(lsSQL);
+
+            while (loRS.next()) {
+                Model_Color_Detail List = new Model_Color_Detail(poGRider);
+                List.openRecord(loRS.getString("sColorIDx"));
+                poModelList.add(List);
+
+            }
+
+            if (poModelList.size() != 0) {
+                loJSON.put("result", "success");
+                loJSON.put("message", "Record loaded successfully.");
+                return loJSON;
+            } else {
+                loJSON.put("result", "error");
+                loJSON.put("message", "No record loaded to the list");
+                return loJSON;
+            }
+
+        } catch (SQLException ex) {
+            Logger.getLogger(Color_Detail.class.getName()).log(Level.SEVERE, null, ex);
+            loJSON.put("result", "error");
+            loJSON.put("message", ex.getMessage());
+            return loJSON;
+        }
+    }
+
+    public ArrayList<Model_Color_Detail> getModelList() {
+        return poModelList;
+    }
+
+    public JSONObject searchMaster(String fsColumn, String fsValue, boolean fbByCode) {
+
+        JSONObject loJSON;
+
+        switch (fsColumn) {
+
+            case "sColorCde": //3
+                Color loColor = new Color(poGRider, true);
+                loColor.setRecordStatus(psRecdStat);
+                loJSON = loColor.searchRecord(fsValue, fbByCode);
+
+                if (loJSON != null) {
+                    loJSON = poModel.setColorCode((String) loColor.getMaster("sColorCde"));
+                    loJSON = poModel.setColorNmeMain((String) loColor.getMaster("sDescript"));
+                } else {
+                    loJSON = new JSONObject();
+                    loJSON.put("result", "error");
+                    loJSON.put("message", "No record found.");
+                    return loJSON;
+                }
+                return loJSON;
+
+            default:
+                return null;
+
+        }
+    }
+
+    public JSONObject searchMaster(int fnColumn, String fsValue, boolean fbByCode) {
+        return searchMaster(poModel.getColumn(fnColumn), fsValue, fbByCode);
+
     }
 }

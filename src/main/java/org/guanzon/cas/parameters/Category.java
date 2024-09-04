@@ -1,6 +1,12 @@
 package org.guanzon.cas.parameters;
 
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.util.ArrayList;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import org.guanzon.appdriver.agent.ShowDialogFX;
+import org.guanzon.appdriver.base.CommonUtils;
 import org.guanzon.appdriver.base.GRider;
 import org.guanzon.appdriver.base.MiscUtil;
 import org.guanzon.appdriver.base.SQLUtil;
@@ -17,6 +23,7 @@ public class Category implements GRecord {
     String psRecdStat;
 
     Model_Category poModel;
+    ArrayList<Model_Category> poModelList;
     JSONObject poJSON;
 
     public Category(GRider foGRider, boolean fbWthParent) {
@@ -163,7 +170,13 @@ public class Category implements GRecord {
             lsCondition = "cRecdStat = " + SQLUtil.toSQL(psRecdStat);
         }
 
-        String lsSQL = MiscUtil.addCondition(poModel.getSQL(), lsCondition);
+        String lsSQL = MiscUtil.addCondition(poModel.makeSelectSQL(), lsCondition);
+
+        if (pbWthParent) {
+            if (!System.getProperty("store.inventory.industry").isEmpty()) {
+                lsSQL = MiscUtil.addCondition(lsSQL, "sCategrCd IN " + CommonUtils.getParameter(System.getProperty("store.inventory.industry")));
+            }
+        }
 
         poJSON = ShowDialogFX.Search(poGRider,
                 lsSQL,
@@ -187,5 +200,52 @@ public class Category implements GRecord {
     @Override
     public Model_Category getModel() {
         return poModel;
+    }
+
+    public JSONObject loadModelList() {
+        poModelList = new ArrayList<>();
+        JSONObject loJSON = new JSONObject();
+        try {
+            String lsCondition = "";
+            if (psRecdStat.length() > 1) {
+                for (int lnCtr = 0; lnCtr <= psRecdStat.length() - 1; lnCtr++) {
+                    lsCondition += ", " + SQLUtil.toSQL(Character.toString(psRecdStat.charAt(lnCtr)));
+                }
+
+                lsCondition = "cRecdStat IN (" + lsCondition.substring(2) + ")";
+            } else {
+                lsCondition = "cRecdStat = " + SQLUtil.toSQL(psRecdStat);
+            }
+            String lsSQL = MiscUtil.addCondition(poModel.makeSelectSQL(), lsCondition);
+
+            ResultSet loRS = poGRider.executeQuery(lsSQL);
+
+            while (loRS.next()) {
+                Model_Category List = new Model_Category(poGRider);
+                List.openRecord(loRS.getString("sCategrCd"));
+                poModelList.add(List);
+
+            }
+
+            if (poModelList.size() != 0) {
+                loJSON.put("result", "success");
+                loJSON.put("message", "Record loaded successfully.");
+                return loJSON;
+            } else {
+                loJSON.put("result", "error");
+                loJSON.put("message", "No record loaded to the list");
+                return loJSON;
+            }
+
+        } catch (SQLException ex) {
+            Logger.getLogger(Category.class.getName()).log(Level.SEVERE, null, ex);
+            loJSON.put("result", "error");
+            loJSON.put("message", ex.getMessage());
+            return loJSON;
+        }
+    }
+
+    public ArrayList<Model_Category> getModelList() {
+        return poModelList;
     }
 }
