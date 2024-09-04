@@ -241,4 +241,37 @@ public class Labor_Model implements GRecord {
     public ArrayList<Model_Labor_Model> getModelList() {
         return poModelList;
     }
+
+    public JSONObject searchMaster(String fsColumn, String fsValue, boolean fbByCode) {
+
+        JSONObject loJSON;
+
+        switch (fsColumn) {
+
+            case "sModelIDx": //2
+                Model loModel = new Model(poGRider, true);
+                loModel.setRecordStatus(psRecdStat);
+                loJSON = loModel.searchRecord(fsValue, fbByCode);
+
+                if (loJSON != null) {
+                    loJSON = poModel.setModelID((String) loModel.getMaster("sModelIDx"));
+                    loJSON = poModel.setModelName((String) loModel.getMaster("sModelNme"));
+                } else {
+                    loJSON = new JSONObject();
+                    loJSON.put("result", "error");
+                    loJSON.put("message", "No record found.");
+                    return loJSON;
+                }
+                return loJSON;
+
+            default:
+                return null;
+
+        }
+    }
+
+    public JSONObject searchMaster(int fnColumn, String fsValue, boolean fbByCode) {
+        return searchMaster(poModel.getColumn(fnColumn), fsValue, fbByCode);
+
+    }
 }
