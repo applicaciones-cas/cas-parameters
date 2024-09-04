@@ -254,7 +254,7 @@ public class Labor_Model implements GRecord {
                 loJSON = loModel.searchRecord(fsValue, fbByCode);
 
                 if (loJSON != null) {
-                    loJSON = poModel.setModelID((String) loModel.getMaster("sModelIDx"));
+                    loJSON = poModel.setModelID((String) loModel.getMaster("sModelCde"));
                     loJSON = poModel.setModelName((String) loModel.getMaster("sModelNme"));
                 } else {
                     loJSON = new JSONObject();
