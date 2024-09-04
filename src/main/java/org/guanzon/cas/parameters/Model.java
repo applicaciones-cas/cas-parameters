@@ -241,4 +241,38 @@ public class Model implements GRecord {
     public ArrayList<Model_Model> getModelList() {
         return poModelList;
     }
+   public JSONObject searchMaster(String fsColumn, String fsValue, boolean fbByCode) {
+
+        JSONObject loJSON;
+
+        switch (fsColumn) {
+
+            case "sBrandCde": //6
+                Brand loBrand = new Brand(poGRider, true);
+                loBrand.setRecordStatus(psRecdStat);
+                loJSON = loBrand.searchRecord(fsValue, fbByCode);
+
+                if (loJSON != null) {
+                    loJSON = poModel.setCategoryCode((String) loBrand.getMaster("sCategrCd"));
+                    loJSON = poModel.setBrandCode((String) loBrand.getMaster("sBrandCde"));
+                    loJSON = poModel.setBrandName((String) loBrand.getMaster("sDescript"));
+                } else {
+                    loJSON = new JSONObject();
+                    loJSON.put("result", "error");
+                    loJSON.put("message", "No record found.");
+                    return loJSON;
+                }
+                return loJSON;
+
+            default:
+                return null;
+
+        }
+    }
+
+    public JSONObject searchMaster(int fnColumn, String fsValue, boolean fbByCode) {
+        return searchMaster(poModel.getColumn(fnColumn), fsValue, fbByCode);
+
+    }
 }
+

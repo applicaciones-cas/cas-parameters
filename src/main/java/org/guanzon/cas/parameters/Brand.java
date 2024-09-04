@@ -169,8 +169,7 @@ public class Brand implements GRecord {
             lsCondition = "cRecdStat = " + SQLUtil.toSQL(psRecdStat);
         }
 
-        String lsSQL = MiscUtil.addCondition(poModel.makeSelectSQL(), " sDescript LIKE "
-                + SQLUtil.toSQL(fsValue + "%") + " AND " + lsCondition);
+        String lsSQL = MiscUtil.addCondition(poModel.makeSelectSQL(), lsCondition);
 
         poJSON = ShowDialogFX.Search(poGRider,
                 lsSQL,
@@ -241,5 +240,38 @@ public class Brand implements GRecord {
 
     public ArrayList<Model_Brand> getModelList() {
         return poModelList;
+    }
+
+    public JSONObject searchMaster(String fsColumn, String fsValue, boolean fbByCode) {
+
+        JSONObject loJSON;
+
+        switch (fsColumn) {
+
+            case "sCategrCd": //3
+                Category loCategory = new Category(poGRider, true);
+                loCategory.setRecordStatus(psRecdStat);
+                loJSON = loCategory.searchRecord(fsValue, fbByCode);
+
+                if (loJSON != null) {
+                    loJSON = poModel.setCategoryCode((String) loCategory.getMaster("sCategrCd"));
+                    loJSON = poModel.setCategoryName((String) loCategory.getMaster("sDescript"));
+                } else {
+                    loJSON = new JSONObject();
+                    loJSON.put("result", "error");
+                    loJSON.put("message", "No record found.");
+                    return loJSON;
+                }
+                return loJSON;
+
+            default:
+                return null;
+
+        }
+    }
+
+    public JSONObject searchMaster(int fnColumn, String fsValue, boolean fbByCode) {
+        return searchMaster(poModel.getColumn(fnColumn), fsValue, fbByCode);
+
     }
 }
