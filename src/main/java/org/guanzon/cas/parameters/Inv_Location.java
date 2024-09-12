@@ -95,7 +95,7 @@ public class Inv_Location implements GRecord {
         }
 
         poJSON = poModel.saveRecord();
-
+       
         if ("success".equals((String) poJSON.get("result"))) {
             if (!pbWthParent) {
                 poGRider.commitTrans();
@@ -177,7 +177,7 @@ public class Inv_Location implements GRecord {
                 fsValue,
                 "Code»Name»Warehouse»Section",
                 "sLocatnCd»sDescript»xWHouseNm»xSectnNme",
-                "a.sLocatnCd»a.sDescript»b.sWHouseNm»c.sSectnNme",
+                "sLocatnCd»sDescript»sWHouseNm»sSectnNme",
                 fbByCode ? 0 : 1);
 
         if (poJSON

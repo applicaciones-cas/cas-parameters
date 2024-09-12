@@ -175,7 +175,7 @@ public class Model implements GRecord {
         poJSON = ShowDialogFX.Search(poGRider,
                 lsSQL,
                 fsValue,
-                "Code»Name",
+                "Code»Model Name",
                 "sModelCde»sModelNme",
                 "sModelCde»sModelNme",
                 fbByCode ? 0 : 1);

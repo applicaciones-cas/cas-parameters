@@ -174,7 +174,7 @@ public class Province implements GRecord {
         poJSON = ShowDialogFX.Search(poGRider,
                 lsSQL,
                 fsValue,
-                "Code»Name",
+                "Code»Province Name",
                 "sProvIDxx»sProvName",
                 "sProvIDxx»sProvName",
                 fbByCode ? 0 : 1);

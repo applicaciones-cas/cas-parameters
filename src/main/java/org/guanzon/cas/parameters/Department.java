@@ -175,7 +175,7 @@ public class Department implements GRecord {
         poJSON = ShowDialogFX.Search(poGRider,
                 lsSQL,
                 fsValue,
-                "Code»Name",
+                "ID»Department Name",
                 "sDeptIDxx»sDeptName",
                 "sDeptIDxx»sDeptName",
                 fbByCode ? 0 : 1);

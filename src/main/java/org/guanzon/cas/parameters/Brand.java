@@ -174,7 +174,7 @@ public class Brand implements GRecord {
         poJSON = ShowDialogFX.Search(poGRider,
                 lsSQL,
                 fsValue,
-                "Code»Name",
+                "Code»Description",
                 "sBrandCde»sDescript",
                 "sBrandCde»sDescript",
                 fbByCode ? 0 : 1);

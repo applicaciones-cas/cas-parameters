@@ -181,7 +181,7 @@ public class Category implements GRecord {
         poJSON = ShowDialogFX.Search(poGRider,
                 lsSQL,
                 fsValue,
-                "Code»Name",
+                "Code»Description",
                 "sCategrCd»sDescript",
                 "sCategrCd»sDescript",
                 fbByCode ? 0 : 1);

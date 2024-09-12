@@ -172,7 +172,7 @@ public class Term implements GRecord {
         poJSON = ShowDialogFX.Search(poGRider,
                 lsSQL,
                 fsValue,
-                "Code»Name",
+                "Code»Term Name",
                 "sTermCode»sDescript",
                 "sTermCode»sDescript",
                 fbByCode ? 0 : 1);

@@ -175,7 +175,7 @@ public class Made implements GRecord {
         poJSON = ShowDialogFX.Search(poGRider,
                 lsSQL,
                 fsValue,
-                "Code»Name",
+                "ID»Made Name",
                 "sMadeIDxx»sMadeName",
                 "sMadeIDxx»sMadeName",
                 fbByCode ? 0 : 1);

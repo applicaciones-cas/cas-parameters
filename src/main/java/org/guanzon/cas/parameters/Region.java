@@ -175,7 +175,7 @@ public class Region implements GRecord {
         poJSON = ShowDialogFX.Search(poGRider,
                 lsSQL,
                 fsValue,
-                "Code»Name",
+                "ID»Region Name",
                 "sRegionID»sRegionNm",
                 "sRegionID»sRegionNm",
                 fbByCode ? 0 : 1);

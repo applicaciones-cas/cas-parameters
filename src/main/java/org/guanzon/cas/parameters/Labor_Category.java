@@ -175,7 +175,7 @@ public class Labor_Category implements GRecord {
         poJSON = ShowDialogFX.Search(poGRider,
                 lsSQL,
                 fsValue,
-                "Code»Name",
+                "ID»Labor Category Name",
                 "sLaborIDx»sCategrCd",
                 "sLaborIDx»sCategrCd",
                 fbByCode ? 0 : 1);

@@ -172,7 +172,7 @@ public class Banks implements GRecord {
         poJSON = ShowDialogFX.Search(poGRider,
                 lsSQL,
                 fsValue,
-                "ID»Name»Code",
+                "ID»Bank Name»Code",
                 "sBankIDxx»sBankName»sBankCode",
                 "sBankIDxx»sBankName»sBankCode",
                 fbByCode ? 0 : 1);

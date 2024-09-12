@@ -175,7 +175,7 @@ public class Inv_Type implements GRecord {
         poJSON = ShowDialogFX.Search(poGRider,
                 lsSQL,
                 fsValue,
-                "Code»Name",
+                "Code»Inv Type Name",
                 "sInvTypCd»sDescript",
                 "sInvTypCd»sDescript",
                 fbByCode ? 0 : 1);

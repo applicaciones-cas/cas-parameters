@@ -172,7 +172,7 @@ public class Warehouse implements GRecord {
         poJSON = ShowDialogFX.Search(poGRider,
                 lsSQL,
                 fsValue,
-                "ID»Warehouse",
+                "ID»Warehouse Name",
                 "sWHouseID»sWHouseNm",
                 "sWHouseID»sWHouseNm",
                 fbByCode ? 0 : 1);

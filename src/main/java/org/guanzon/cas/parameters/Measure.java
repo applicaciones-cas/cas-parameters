@@ -172,7 +172,7 @@ public class Measure implements GRecord {
         poJSON = ShowDialogFX.Search(poGRider,
                 lsSQL,
                 fsValue,
-                "Code»Name",
+                "ID»Measurement Name",
                 "sMeasurID»sMeasurNm",
                 "sMeasurID»sMeasurNm",
                 fbByCode ? 0 : 1);

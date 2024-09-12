@@ -172,7 +172,7 @@ public class Size implements GRecord {
         poJSON = ShowDialogFX.Search(poGRider,
                 lsSQL,
                 fsValue,
-                "Code»Name",
+                "ID»Size Name",
                 "sSizeIDxx»sSizeName",
                 "sSizeIDxx»sSizeName",
                 fbByCode ? 0 : 1);

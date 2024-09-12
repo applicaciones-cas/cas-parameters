@@ -172,7 +172,7 @@ public class Section implements GRecord {
         poJSON = ShowDialogFX.Search(poGRider,
                 lsSQL,
                 fsValue,
-                "Code»Name",
+                "ID»Section Name",
                 "sSectnIDx»sSectnNme",
                 "sSectnIDx»sSectnNme",
                 fbByCode ? 0 : 1);

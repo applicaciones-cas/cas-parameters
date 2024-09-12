@@ -175,7 +175,7 @@ public class Color implements GRecord {
         poJSON = ShowDialogFX.Search(poGRider,
                 lsSQL,
                 fsValue,
-                "Code»Name",
+                "Code»Description",
                 "sColorCde»sDescript",
                 "sColorCde»sDescript",
                 fbByCode ? 0 : 1);

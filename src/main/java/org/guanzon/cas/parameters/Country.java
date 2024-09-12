@@ -175,7 +175,7 @@ public class Country implements GRecord {
         poJSON = ShowDialogFX.Search(poGRider,
                 lsSQL,
                 fsValue,
-                "Code»Name",
+                "Code»Country Name",
                 "sCntryCde»sCntryNme",
                 "sCntryCde»sCntryNme",
                 fbByCode ? 0 : 1);

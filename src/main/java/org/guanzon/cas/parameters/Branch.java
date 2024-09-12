@@ -235,7 +235,7 @@ public class Branch implements GRecord {
         poJSON = ShowDialogFX.Search(poGRider,
                 lsSQL,
                 fsValue,
-                "Code»Name",
+                "Code»Branch Name",
                 "sBranchCd»sBranchNm",
                 "sBranchCd»sBranchNm",
                 fbByCode ? 0 : 1);

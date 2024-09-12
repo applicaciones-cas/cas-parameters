@@ -172,7 +172,7 @@ public class Affiliated_Company implements GRecord {
         poJSON = ShowDialogFX.Search(poGRider,
                 lsSQL,
                 fsValue,
-                "Code»Name",
+                "Code»Company Name",
                 "sCompnyCd»sCompnyNm",
                 "sCompnyCd»sCompnyNm",
                 fbByCode ? 0 : 1);
