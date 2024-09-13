@@ -196,6 +196,7 @@ public class Banks_Branches implements GRecord {
     public Model_Banks_Branches getModel() {
         return poModel;
     }
+    
 
     public JSONObject loadModelList() {
 
@@ -245,36 +246,21 @@ public class Banks_Branches implements GRecord {
         return poModelList;
     }
 
-    public JSONObject searchMaster(String fsColumn, String fsValue, boolean fbByCode) {
+    public JSONObject searchDetail(String fsColumn, String fsValue, boolean fbByCode) {
 
         JSONObject loJSON;
 
         switch (fsColumn) {
-
-            case "sBankIDxx": //4
-                Banks loBanks = new Banks(poGRider, true);
-                loBanks.setRecordStatus(psRecdStat);
-                loJSON = loBanks.searchRecord(fsValue, fbByCode);
-
-                if (loJSON != null) {
-                    loJSON = poModel.setBanksID((String) loBanks.getMaster("sBankIDxx"));
-                    loJSON = poModel.setBankName((String) loBanks.getMaster("sBankName"));
-                    loJSON = poModel.setBankCode((String) loBanks.getMaster("sBankCode"));
-                } else {
-                    loJSON = new JSONObject();
-                    loJSON.put("result", "error");
-                    loJSON.put("message", "No record found.");
-                    return loJSON;
-                }
-            case "sProvIDxx": // 7
+            case "sTownIDxx": // 7
                 Province loProvince = new Province(poGRider, true);
                 loProvince.setRecordStatus(psRecdStat);
                 loJSON = loProvince.searchRecord(fsValue, fbByCode);
-                ShowMessageFX.Information((String)loProvince.getMaster("sProvIDxx"), "Computerized Acounting System", "_");
+//                ShowMessageFX.Information((String)loProvince.getMaster("sProvIDxx"), "Computerized Acounting System", "_");
                 if (loJSON != null) {
                     System.out.println((String) loProvince.getMaster("sProvIDxx"));
                     System.out.println((String) loProvince.getMaster("sProvName"));
                     poModel.setTownID((String) loProvince.getMaster("sProvIDxx"));
+                    poModel.setTownName((String) loProvince.getMaster("sProvName"));
 
                     return loJSON;
 
@@ -285,14 +271,32 @@ public class Banks_Branches implements GRecord {
                     return loJSON;
                 }
 
+            case "sBankIDxx": //4
+                Banks loBanks = new Banks(poGRider, true);
+                loBanks.setRecordStatus(psRecdStat);
+                loJSON = loBanks.searchRecord(fsValue, fbByCode);
+
+                if (loJSON != null) {
+                    loJSON = poModel.setBanksID((String) loBanks.getMaster("sBankIDxx"));
+                    loJSON = poModel.setBankCode((String) loBanks.getMaster("sBankCode"));
+                    loJSON = poModel.setBankName((String) loBanks.getMaster("sBankName"));
+                    return loJSON;
+                } else {
+                    loJSON = new JSONObject();
+                    loJSON.put("result", "error");
+                    loJSON.put("message", "No record found.");
+                    return loJSON;
+                }
+
+                
             default:
                 return null;
 
         }
     }
 
-    public JSONObject searchMaster(int fnColumn, String fsValue, boolean fbByCode) {
-        return searchMaster(poModel.getColumn(fnColumn), fsValue, fbByCode);
-
-    }
+//    public JSONObject searchDetail(int fnColumn, String fsValue, boolean fbByCode) {
+//        return searchDetail(poModel.getColumn(fnColumn), fsValue, fbByCode);
+//
+//    }
 }

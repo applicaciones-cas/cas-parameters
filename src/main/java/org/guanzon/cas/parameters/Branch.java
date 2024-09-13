@@ -132,7 +132,6 @@ public class Branch implements GRecord {
                     System.out.println((String) loProvince.getMaster("sProvIDxx"));
                     System.out.println((String) loProvince.getMaster("sProvName"));
                     poModel.setTownID((String) loProvince.getMaster("sProvIDxx"));
-
                     return loJSON;
 
                 } else {
@@ -281,6 +280,7 @@ public class Branch implements GRecord {
             } else {
                 lsCondition = "cRecdStat = " + SQLUtil.toSQL(psRecdStat);
             }
+            
             String lsSQL = MiscUtil.addCondition(poModel.makeSelectSQL(), lsCondition);
 
             ResultSet loRS = poGRider.executeQuery(lsSQL);
