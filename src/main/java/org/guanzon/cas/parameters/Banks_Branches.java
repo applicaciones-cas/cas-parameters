@@ -6,6 +6,7 @@ import java.util.ArrayList;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import org.guanzon.appdriver.agent.ShowDialogFX;
+import org.guanzon.appdriver.agent.ShowMessageFX;
 import org.guanzon.appdriver.base.GRider;
 import org.guanzon.appdriver.base.MiscUtil;
 import org.guanzon.appdriver.base.SQLUtil;
@@ -265,10 +266,24 @@ public class Banks_Branches implements GRecord {
                     loJSON.put("message", "No record found.");
                     return loJSON;
                 }
-                return loJSON;
-//            case "sTownIDxx": // 7
-//
-//                return loJSON;
+            case "sProvIDxx": // 7
+                Province loProvince = new Province(poGRider, true);
+                loProvince.setRecordStatus(psRecdStat);
+                loJSON = loProvince.searchRecord(fsValue, fbByCode);
+                ShowMessageFX.Information((String)loProvince.getMaster("sProvIDxx"), "Computerized Acounting System", "_");
+                if (loJSON != null) {
+                    System.out.println((String) loProvince.getMaster("sProvIDxx"));
+                    System.out.println((String) loProvince.getMaster("sProvName"));
+                    poModel.setTownID((String) loProvince.getMaster("sProvIDxx"));
+
+                    return loJSON;
+
+                } else {
+                    loJSON = new JSONObject();
+                    loJSON.put("result", "error");
+                    loJSON.put("message", "No Transaction found.");
+                    return loJSON;
+                }
 
             default:
                 return null;
