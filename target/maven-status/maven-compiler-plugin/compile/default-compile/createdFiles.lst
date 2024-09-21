@@ -7,7 +7,9 @@ org\guanzon\cas\parameters\Warehouse.class
 org\guanzon\cas\parameters\Category_Level4.class
 org\guanzon\cas\parameters\Department.class
 org\guanzon\cas\parameters\Category.class
+org\guanzon\cas\parameters\Model_Series.class
 org\guanzon\cas\parameters\Color_Detail.class
+org\guanzon\cas\parameters\Model_Variant.class
 org\guanzon\cas\parameters\Inv_Location.class
 org\guanzon\cas\parameters\Labor_Category.class
 org\guanzon\cas\parameters\Banks_Branches.class

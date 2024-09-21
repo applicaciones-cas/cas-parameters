@@ -28,22 +28,17 @@ public class testBrand {
     public void testProgramFlow() {
         JSONObject loJSON;
 
-         loJSON = record.newRecord();
+        loJSON = record.newRecord();
         if ("error".equals((String) loJSON.get("result"))) {
             Assert.fail((String) loJSON.get("message"));
         }
 
-        loJSON = record.getModel() .setBrandCode("M4");
-        if ("error".equals((String) loJSON.get("result"))) {
-            Assert.fail((String) loJSON.get("message"));
-        }
-
-        loJSON = record.getModel() .setDescription("MMB");
+        loJSON = record.getModel() .setDescription("Samsung");
         if ("error".equals((String) loJSON.get("result"))) {
             Assert.fail((String) loJSON.get("message"));
         }
         
-        loJSON = record.getModel() .setCategoryCode("3");
+        loJSON = record.getModel() .setCategoryCode("0002");
         if ("error".equals((String) loJSON.get("result"))) {
             Assert.fail((String) loJSON.get("message"));
         }

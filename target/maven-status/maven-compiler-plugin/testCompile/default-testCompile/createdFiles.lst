@@ -26,5 +26,7 @@ testLabor_Model.class
 testColor_Detail.class
 testMeasure.class
 testInv_Location.class
+testModelVariant.class
+testModelSeries.class
 testBanks_Branches.class
 testCategory_Level4.class

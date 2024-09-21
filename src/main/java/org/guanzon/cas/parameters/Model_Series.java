@@ -11,27 +11,26 @@ import org.guanzon.appdriver.base.MiscUtil;
 import org.guanzon.appdriver.base.SQLUtil;
 import org.guanzon.appdriver.constant.EditMode;
 import org.guanzon.appdriver.iface.GRecord;
-import org.guanzon.cas.model.parameters.Model_Brand;
+import org.guanzon.cas.model.parameters.Model_Model;
+import org.guanzon.cas.model.parameters.Model_Model_Series;
 import org.json.simple.JSONObject;
 
-public class Brand implements GRecord {
+public class Model_Series implements GRecord {
 
     GRider poGRider;
     boolean pbWthParent;
     int pnEditMode;
     String psRecdStat;
 
-    Model_Brand poModel;
-    ArrayList<Model_Brand> poModelList;
+    Model_Model_Series poModel;
+    ArrayList<Model_Model> poModelList;
     JSONObject poJSON;
 
-    public Brand(GRider foGRider, boolean fbWthParent) {
+    public Model_Series(GRider foGRider, boolean fbWthParent) {
         poGRider = foGRider;
         pbWthParent = fbWthParent;
 
-        poModel = new Model_Brand(foGRider);
-        
-        psRecdStat = "1";
+        poModel = new Model_Model_Series(foGRider);
         pnEditMode = EditMode.UNKNOWN;
     }
 
@@ -158,10 +157,8 @@ public class Brand implements GRecord {
     }
 
     @Override
-    public JSONObject searchRecord(String fsValue, boolean fbByCode){
+    public JSONObject searchRecord(String fsValue, boolean fbByCode) {
         String lsCondition = "";
-        
-        poJSON = new JSONObject();
 
         if (psRecdStat.length() > 1) {
             for (int lnCtr = 0; lnCtr <= psRecdStat.length() - 1; lnCtr++) {
@@ -172,50 +169,29 @@ public class Brand implements GRecord {
         } else {
             lsCondition = "cRecdStat = " + SQLUtil.toSQL(psRecdStat);
         }
-        
-        String lsSQL = MiscUtil.addCondition(poModel.makeSelectSQL(), lsCondition);
-        
-        if (fbByCode){
-            ResultSet loRS = poGRider.executeQuery(MiscUtil.addCondition(poModel.makeSelectSQL(), "sBrandCde = " + SQLUtil.toSQL(fsValue)));
-            
-            try {
-                if (loRS.next()){
-                    lsSQL = loRS.getString("sBrandCde");
-                    MiscUtil.close(loRS);
-                    
-                    return poModel.openRecord(lsSQL);
-                } else {
-                    poJSON.put("result", "error");
-                    poJSON.put("message", "No record to load.");
-                    return poJSON;
-                }
-            } catch (SQLException e) {
-                poJSON.put("result", "error");
-                poJSON.put("message", e.getMessage());
-                return poJSON;
-            }
-        }
-        
+
+        String lsSQL = MiscUtil.addCondition(MiscUtil.makeSQL(poModel), lsCondition);
+
         poJSON = ShowDialogFX.Search(poGRider,
-                lsSQL,
-                fsValue,
-                "Code»Name",
-                "sBrandCde»sDescript",
-                "sBrandCde»sDescript",
+                                lsSQL,
+                                    fsValue,
+                            "Code»Name",
+                            "sModelCde»sModelNme",
+                            "sModelCde»sModelNme",
                 fbByCode ? 0 : 1);
 
         if (poJSON != null) {
-            return poModel.openRecord((String) poJSON.get("sBrandCde"));
+            return poModel.openRecord((String) poJSON.get("sModelCde"));
         } else {
             poJSON.put("result", "error");
-            poJSON.put("message", "No record to load.");
+            poJSON.put("message", "No record loaded to update.");
             return poJSON;
         }
     }
 
     //additional methods
     @Override
-    public Model_Brand getModel() {
+    public Model_Model_Series getModel() {
         return poModel;
     }
 
@@ -233,18 +209,18 @@ public class Brand implements GRecord {
             } else {
                 lsCondition = "cRecdStat = " + SQLUtil.toSQL(psRecdStat);
             }
-            String lsSQL = MiscUtil.addCondition(poModel.makeSelectSQL(), lsCondition);
+            String lsSQL = MiscUtil.addCondition(MiscUtil.makeSelect(poModel), lsCondition);
 
             ResultSet loRS = poGRider.executeQuery(lsSQL);
 
             while (loRS.next()) {
-                Model_Brand List = new Model_Brand(poGRider);
-                List.openRecord(loRS.getString("sBrandCde"));
+                Model_Model List = new Model_Model(poGRider);
+                List.openRecord(loRS.getString("sModelCde"));
                 poModelList.add(List);
 
             }
 
-            if (poModelList.size() != 0) {
+            if (!poModelList.isEmpty()) {
                 loJSON.put("result", "success");
                 loJSON.put("message", "Record loaded successfully.");
                 return loJSON;
@@ -255,39 +231,39 @@ public class Brand implements GRecord {
             }
 
         } catch (SQLException ex) {
-            Logger.getLogger(Brand.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(Model_Series.class.getName()).log(Level.SEVERE, null, ex);
             loJSON.put("result", "error");
             loJSON.put("message", ex.getMessage());
             return loJSON;
         }
     }
 
-    public ArrayList<Model_Brand> getModelList() {
+    public ArrayList<Model_Model> getModelList() {
         return poModelList;
     }
-
+    
     public JSONObject searchMaster(String fsColumn, String fsValue, boolean fbByCode) {
-
         JSONObject loJSON;
 
         switch (fsColumn) {
-
-            case "sCategrCd": //3
-                Category loCategory = new Category(poGRider, true);
-                loCategory.setRecordStatus(psRecdStat);
-                loJSON = loCategory.searchRecord(fsValue, fbByCode);
+            case "sBrandCde":
+                Brand loBrand = new Brand(poGRider, true);
+                loJSON = loBrand.searchRecord(fsValue, fbByCode);
 
                 if (loJSON != null) {
-                    loJSON = poModel.setCategoryCode((String) loCategory.getMaster("sCategrCd"));
-                    loJSON = poModel.setCategoryName((String) loCategory.getMaster("sDescript"));
+                    poModel.setBrandCode((String) loBrand.getMaster("sBrandCde"));
+                    
+                    loJSON = new JSONObject();
+                    loJSON.put("result", "success");
                 } else {
+                    poModel.setBrandCode("");
+                    
                     loJSON = new JSONObject();
                     loJSON.put("result", "error");
                     loJSON.put("message", "No record found.");
-                    return loJSON;
                 }
+                
                 return loJSON;
-
             default:
                 return null;
 
@@ -296,6 +272,6 @@ public class Brand implements GRecord {
 
     public JSONObject searchMaster(int fnColumn, String fsValue, boolean fbByCode) {
         return searchMaster(poModel.getColumn(fnColumn), fsValue, fbByCode);
-
     }
 }
+
