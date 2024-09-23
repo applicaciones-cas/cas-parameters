@@ -176,13 +176,13 @@ public class Color implements GRecord {
                 lsSQL,
                 fsValue,
                 "Code»Name",
-                "sColorCde»sDescript",
-                "sColorCde»sDescript",
+                "sColorIDx»sDescript",
+                "sColorIDx»sDescript",
                 fbByCode ? 0 : 1);
 
         if (poJSON
                 != null) {
-            return poModel.openRecord((String) poJSON.get("sColorCde"));
+            return poModel.openRecord((String) poJSON.get("sColorIDx"));
         } else {
             poJSON.put("result", "error");
             poJSON.put("message", "No record loaded to update.");
@@ -216,7 +216,7 @@ public class Color implements GRecord {
 
             while (loRS.next()) {
                 Model_Color List = new Model_Color(poGRider);
-                List.openRecord(loRS.getString("sColorCde"));
+                List.openRecord(loRS.getString("sColorIDx"));
                 poModelList.add(List);
 
             }
