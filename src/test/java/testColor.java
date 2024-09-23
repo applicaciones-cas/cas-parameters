@@ -33,7 +33,7 @@ public class testColor {
             Assert.fail((String) loJSON.get("message"));
         }
 
-        loJSON = record.getModel().setColorCode("US");
+        loJSON = record.getModel().setColorID("US");
         if ("error".equals((String) loJSON.get("result"))) {
             Assert.fail((String) loJSON.get("message"));
         }

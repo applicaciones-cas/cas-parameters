@@ -176,12 +176,12 @@ public class Model implements GRecord {
                 lsSQL,
                 fsValue,
                 "Code»Name",
-                "sModelCde»sModelNme",
-                "sModelCde»sModelNme",
+                "sModelIDx»sModelNme",
+                "sModelIDx»sModelNme",
                 fbByCode ? 0 : 1);
 
         if (poJSON != null) {
-            return poModel.openRecord((String) poJSON.get("sModelCde"));
+            return poModel.openRecord((String) poJSON.get("sModelIDx"));
         } else {
             poJSON.put("result", "error");
             poJSON.put("message", "No record loaded to update.");
@@ -215,7 +215,7 @@ public class Model implements GRecord {
 
             while (loRS.next()) {
                 Model_Model List = new Model_Model(poGRider);
-                List.openRecord(loRS.getString("sModelCde"));
+                List.openRecord(loRS.getString("sModelIDx"));
                 poModelList.add(List);
 
             }

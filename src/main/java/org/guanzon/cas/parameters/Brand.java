@@ -176,11 +176,11 @@ public class Brand implements GRecord {
         String lsSQL = MiscUtil.addCondition(poModel.makeSelectSQL(), lsCondition);
         
         if (fbByCode){
-            ResultSet loRS = poGRider.executeQuery(MiscUtil.addCondition(poModel.makeSelectSQL(), "sBrandCde = " + SQLUtil.toSQL(fsValue)));
+            ResultSet loRS = poGRider.executeQuery(MiscUtil.addCondition(poModel.makeSelectSQL(), "sBrandIDx = " + SQLUtil.toSQL(fsValue)));
             
             try {
                 if (loRS.next()){
-                    lsSQL = loRS.getString("sBrandCde");
+                    lsSQL = loRS.getString("sBrandIDx");
                     MiscUtil.close(loRS);
                     
                     return poModel.openRecord(lsSQL);
@@ -200,12 +200,12 @@ public class Brand implements GRecord {
                 lsSQL,
                 fsValue,
                 "Code»Name",
-                "sBrandCde»sDescript",
-                "sBrandCde»sDescript",
+                "sBrandIDx»sDescript",
+                "sBrandIDx»sDescript",
                 fbByCode ? 0 : 1);
 
         if (poJSON != null) {
-            return poModel.openRecord((String) poJSON.get("sBrandCde"));
+            return poModel.openRecord((String) poJSON.get("sBrandIDx"));
         } else {
             poJSON.put("result", "error");
             poJSON.put("message", "No record to load.");
@@ -239,7 +239,7 @@ public class Brand implements GRecord {
 
             while (loRS.next()) {
                 Model_Brand List = new Model_Brand(poGRider);
-                List.openRecord(loRS.getString("sBrandCde"));
+                List.openRecord(loRS.getString("sBrandIDx"));
                 poModelList.add(List);
 
             }
