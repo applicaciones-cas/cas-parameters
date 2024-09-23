@@ -169,7 +169,7 @@ public class Model implements GRecord {
             lsCondition = "cRecdStat = " + SQLUtil.toSQL(psRecdStat);
         }
 
-        String lsSQL = MiscUtil.addCondition(poModel.makeSelectSQL(), " sModelNme LIKE "
+        String lsSQL = MiscUtil.addCondition(MiscUtil.makeSelect(poModel), " sModelNme LIKE "
                 + SQLUtil.toSQL(fsValue + "%") + " AND " + lsCondition);
 
         poJSON = ShowDialogFX.Search(poGRider,
@@ -209,7 +209,7 @@ public class Model implements GRecord {
             } else {
                 lsCondition = "cRecdStat = " + SQLUtil.toSQL(psRecdStat);
             }
-            String lsSQL = MiscUtil.addCondition(poModel.makeSelectSQL(), lsCondition);
+            String lsSQL = MiscUtil.addCondition(MiscUtil.makeSelect(poModel), lsCondition);
 
             ResultSet loRS = poGRider.executeQuery(lsSQL);
 
@@ -247,15 +247,14 @@ public class Model implements GRecord {
 
         switch (fsColumn) {
 
-            case "sBrandCde": //6
+            case "sBrandIDx": //6
                 Brand loBrand = new Brand(poGRider, true);
                 loBrand.setRecordStatus(psRecdStat);
                 loJSON = loBrand.searchRecord(fsValue, fbByCode);
 
                 if (loJSON != null) {
                     loJSON = poModel.setCategoryCode((String) loBrand.getMaster("sCategrCd"));
-                    loJSON = poModel.setBrandCode((String) loBrand.getMaster("sBrandCde"));
-                    loJSON = poModel.setBrandName((String) loBrand.getMaster("sDescript"));
+                    loJSON = poModel.setBrandCode((String) loBrand.getMaster("sBrandIDx"));
                 } else {
                     loJSON = new JSONObject();
                     loJSON.put("result", "error");
@@ -273,6 +272,48 @@ public class Model implements GRecord {
     public JSONObject searchMaster(int fnColumn, String fsValue, boolean fbByCode) {
         return searchMaster(poModel.getColumn(fnColumn), fsValue, fbByCode);
 
+    }
+    
+    public Brand Brand(){
+        Brand loBrand = new Brand(poGRider, true);
+        
+        if (poModel.getBrandID().isEmpty()) return loBrand;
+        
+        JSONObject loJSON = loBrand.openRecord(poModel.getBrandID());
+        
+        if (!"error".equals((String) loJSON.get("result"))){
+            return loBrand;
+        } else {
+            return new Brand(poGRider, true);
+        }
+    }
+    
+    public Model_Series Series(){
+        Model_Series loSeries = new Model_Series(poGRider, true);
+        
+        if (poModel.getSeriesID().isEmpty()) return loSeries;
+        
+        JSONObject loJSON = loSeries.openRecord(poModel.getSeriesID());
+        
+        if (!"error".equals((String) loJSON.get("result"))){
+            return loSeries;
+        } else {
+            return new Model_Series(poGRider, true);
+        }
+    }
+    
+    public Model_Variant Variant(){
+        Model_Variant loVariant = new Model_Variant(poGRider, true);
+        
+        if (poModel.getVariantID().isEmpty()) return loVariant;
+        
+        JSONObject loJSON = loVariant.openRecord(poModel.getSeriesID());
+        
+        if (!"error".equals((String) loJSON.get("result"))){
+            return loVariant;
+        } else {
+            return new Model_Variant(poGRider, true);
+        }
     }
 }
 
