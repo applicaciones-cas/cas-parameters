@@ -244,54 +244,17 @@ public class Model implements GRecord {
     public ArrayList<Model_Model> getModelList() {
         return poModelList;
     }
-   public JSONObject searchMaster(String fsColumn, String fsValue, boolean fbByCode) {
+    
+    public JSONObject searchMaster(String fsColumn, String fsValue, boolean fbByCode) {
         JSONObject loJSON;
 
         switch (fsColumn) {
             case "sBrandIDx":
-                Brand loBrand = new Brand(poGRider, true);
-                loJSON = loBrand.searchRecord(fsValue, fbByCode);
-
-                if (loJSON != null) {
-                    return poModel.setBrandID((String) loBrand.getMaster("sBrandIDx"));
-                } else {
-                    loJSON = new JSONObject();
-                    loJSON.put("result", "error");
-                    loJSON.put("message", "No record found.");
-                    return loJSON;
-                }
+                return searchBrand(fsValue, fbByCode);
             case "sSeriesID":
-                Model_Series loSeries = new Model_Series(poGRider, true);
-                loJSON = loSeries.searchRecord(fsValue, fbByCode);
-
-                if (loJSON != null) {
-                    if (!((String) loSeries.getMaster("sBrandIDx")).isEmpty()){
-                        poModel.setBrandID((String) loSeries.getMaster("sBrandIDx"));
-                    }
-                    
-                    return poModel.setSeriesID((String) loSeries.getMaster("sSeriesID"));
-                } else {
-                    loJSON = new JSONObject();
-                    loJSON.put("result", "error");
-                    loJSON.put("message", "No record found.");
-                    return loJSON;
-                }
+                return searchModelSeries(fsValue, fbByCode);
             case "sVrntIDxx":
-                Model_Variant loVariant = new Model_Variant(poGRider, true);
-                loJSON = loVariant.searchRecord(fsValue, fbByCode);
-
-                if (loJSON != null) {
-                    if (!((String) loVariant.getMaster("sBrandIDx")).isEmpty()){
-                        poModel.setBrandID((String) loVariant.getMaster("sBrandIDx"));
-                    }
-                    
-                    return poModel.setSeriesID((String) loVariant.getMaster("sVrntIDxx"));
-                } else {
-                    loJSON = new JSONObject();
-                    loJSON.put("result", "error");
-                    loJSON.put("message", "No record found.");
-                    return loJSON;
-                }
+                return searchModelVariant(fsValue, fbByCode);
             default:
                 return null;
 
@@ -300,8 +263,59 @@ public class Model implements GRecord {
 
     public JSONObject searchMaster(int fnColumn, String fsValue, boolean fbByCode) {
         return searchMaster(poModel.getColumn(fnColumn), fsValue, fbByCode);
-
     }
+    
+    public JSONObject searchBrand(String fsValue, boolean fbByCode){
+        Brand loBrand = new Brand(poGRider, true);
+        
+        JSONObject loJSON = loBrand.searchRecord(fsValue, fbByCode);
+
+        if (loJSON != null) {
+            return poModel.setBrandID((String) loBrand.getMaster("sBrandIDx"));
+        } else {
+            loJSON = new JSONObject();
+            loJSON.put("result", "error");
+            loJSON.put("message", "No record found.");
+            return loJSON;
+        }
+    }
+    
+    public JSONObject searchModelSeries(String fsValue, boolean fbByCode){
+        Model_Series loSeries = new Model_Series(poGRider, true);
+        JSONObject loJSON = loSeries.searchRecord(fsValue, fbByCode);
+
+        if (loJSON != null) {
+            if (!((String) loSeries.getMaster("sBrandIDx")).isEmpty()){
+                poModel.setBrandID((String) loSeries.getMaster("sBrandIDx"));
+            }
+
+            return poModel.setSeriesID((String) loSeries.getMaster("sSeriesID"));
+        } else {
+            loJSON = new JSONObject();
+            loJSON.put("result", "error");
+            loJSON.put("message", "No record found.");
+            return loJSON;
+        }
+    }
+    
+    public JSONObject searchModelVariant(String fsValue, boolean fbByCode){
+        Model_Variant loVariant = new Model_Variant(poGRider, true);
+        JSONObject loJSON = loVariant.searchRecord(fsValue, fbByCode);
+
+        if (loJSON != null) {
+            if (!((String) loVariant.getMaster("sBrandIDx")).isEmpty()){
+                poModel.setBrandID((String) loVariant.getMaster("sBrandIDx"));
+            }
+
+            return poModel.setSeriesID((String) loVariant.getMaster("sVrntIDxx"));
+        } else {
+            loJSON = new JSONObject();
+            loJSON.put("result", "error");
+            loJSON.put("message", "No record found.");
+            return loJSON;
+        }
+    }
+    
     
     public Model_Brand Brand(){
         Model_Brand loBrand = new Model_Brand(poGRider);
