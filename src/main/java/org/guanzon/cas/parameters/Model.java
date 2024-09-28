@@ -271,7 +271,7 @@ public class Model implements GRecord {
         JSONObject loJSON = loBrand.searchRecord(fsValue, fbByCode);
 
         if (loJSON != null) {
-            return poModel.setBrandID((String) loBrand.getMaster("sBrandIDx"));
+            return poModel.setBrandID(loBrand.getModel().getBrandID());
         } else {
             loJSON = new JSONObject();
             loJSON.put("result", "error");
