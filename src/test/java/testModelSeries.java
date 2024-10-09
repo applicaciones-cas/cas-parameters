@@ -40,14 +40,14 @@ public class testModelSeries {
             Assert.fail((String) loJSON.get("message"));
         }
 
-        loJSON = record.searchMaster("sBrandCde", "24005", true);
+        loJSON = record.searchMaster("sBrandIDx", "24005", true);
         if ("error".equals((String) loJSON.get("result"))) {
             Assert.fail((String) loJSON.get("message"));
         }
         
         //get the brand name
         Brand loBrand = new Brand(instance, true);
-        loJSON = loBrand.searchRecord(record.getModel().getBrandCode(), true);
+        loJSON = loBrand.searchRecord(record.getModel().getBrandID(), true);
         if ("error".equals((String) loJSON.get("result"))) {
             Assert.fail((String) loJSON.get("message"));
         } else {
