@@ -178,12 +178,12 @@ public class Model_Series implements GRecord {
                                 lsSQL,
                                     fsValue,
                             "ID»Description»Brand",
-                            "a.sSeriesIDx»a.sDescript»xBrandNme",
-                            "a.sSeriesIDx»a.sDescript»b.sDescript",
+                            "a.sSeriesID»a.sDescript»xBrandNme",
+                            "a.sSeriesID»a.sDescript»b.sDescript",
                                     fbByCode ? 0 : 1);
 
         if (poJSON != null) {
-            return poModel.openRecord((String) poJSON.get("sModelIDx"));
+            return poModel.openRecord((String) poJSON.get("sSeriesID"));
         } else {
             poJSON.put("result", "error");
             poJSON.put("message", "No record loaded to update.");
@@ -213,8 +213,8 @@ public class Model_Series implements GRecord {
                                 lsSQL,
                                     fsValue,
                             "ID»Description»Brand",
-                            "a.sSeriesIDx»a.sDescript»xBrandNme",
-                            "a.sSeriesIDx»a.sDescript»b.sDescript",
+                            "a.sSeriesID»a.sDescript»xBrandNme",
+                            "a.sSeriesID»a.sDescript»b.sDescript",
                                     fbByCode ? 0 : 1);
 
         if (poJSON != null) {
@@ -288,12 +288,12 @@ public class Model_Series implements GRecord {
                 loJSON = loBrand.searchRecord(fsValue, fbByCode);
 
                 if (loJSON != null) {
-                    poModel.setBrandCode((String) loBrand.getMaster("sBrandIDx"));
+                    poModel.setBrandID((String) loBrand.getMaster("sBrandIDx"));
                     
                     loJSON = new JSONObject();
                     loJSON.put("result", "success");
                 } else {
-                    poModel.setBrandCode("");
+                    poModel.setBrandID("");
                     
                     loJSON = new JSONObject();
                     loJSON.put("result", "error");

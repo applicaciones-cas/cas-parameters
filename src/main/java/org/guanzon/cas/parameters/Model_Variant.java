@@ -167,23 +167,45 @@ public class Model_Variant implements GRecord {
                 lsCondition += ", " + SQLUtil.toSQL(Character.toString(psRecdStat.charAt(lnCtr)));
             }
 
-            lsCondition = "cRecdStat IN (" + lsCondition.substring(2) + ")";
+            lsCondition = "a.cRecdStat IN (" + lsCondition.substring(2) + ")";
         } else {
-            lsCondition = "cRecdStat = " + SQLUtil.toSQL(psRecdStat);
+            lsCondition = "a.cRecdStat = " + SQLUtil.toSQL(psRecdStat);
         }
 
         String lsSQL = MiscUtil.addCondition(getSQ_Browse(), lsCondition);
+        
+        if (fbByCode){
+            ResultSet loRS = poGRider.executeQuery(MiscUtil.addCondition(getSQ_Browse(), "a.sBrandIDx = " + SQLUtil.toSQL(fsValue)));
+            
+            try {
+                if (loRS.next()){
+                    lsSQL = loRS.getString("sBrandIDx");
+                    MiscUtil.close(loRS);
+                    
+                    return poModel.openRecord(lsSQL);
+                } else {
+                    poJSON.put("result", "error");
+                    poJSON.put("message", "No record to load.");
+                    return poJSON;
+                }
+            } catch (SQLException e) {
+                poJSON.put("result", "error");
+                poJSON.put("message", e.getMessage());
+                return poJSON;
+            }
+        }
+        
 
         poJSON = ShowDialogFX.Search(poGRider,
                                 lsSQL,
                                     fsValue,
                             "ID»Name»Description»Brand",
-                            "sVrntIDxx»sVrntName»sDescript»xBrandNme",
-                            "sVrntIDxx»sVrntName»sDescript»b.sDescript",
-                fbByCode ? 0 : 1);
+                            "a.sVrntIDxx»a.sVrntName»a.sDescript»xBrandNme",
+                            "a.sVrntIDxx»a.sVrntName»a.sDescript»b.sDescript",
+                                    fbByCode ? 0 : 1);
 
         if (poJSON != null) {
-            return poModel.openRecord((String) poJSON.get("sModelIDx"));
+            return poModel.openRecord((String) poJSON.get("sVrntIDxx"));
         } else {
             poJSON.put("result", "error");
             poJSON.put("message", "No record loaded to update.");
@@ -213,9 +235,9 @@ public class Model_Variant implements GRecord {
                                 lsSQL,
                                     fsValue,
                             "ID»Name»Description»Brand",
-                            "sVrntIDxx»sVrntName»sDescript»xBrandNme",
-                            "sVrntIDxx»sVrntName»sDescript»b.sDescript",
-                fbByCode ? 0 : 1);
+                            "a.sVrntIDxx»a.sVrntName»a.sDescript»xBrandNme",
+                            "a.sVrntIDxx»a.sVrntName»a.sDescript»b.sDescript",
+                                    fbByCode ? 0 : 1);
 
         if (poJSON != null) {
             return poModel.openRecord((String) poJSON.get("sModelIDx"));
@@ -313,13 +335,14 @@ public class Model_Variant implements GRecord {
     
     private String getSQ_Browse(){
         return "SELECT" +
-                    "  sVrntIDxx" +
-                    ", sVrntName" +
-                    ", sDescript" +
-                    ", sBrandIDx" + 
-                    ", cRecdStat" +
-                    ", sModified" +
-                    ", dModified" +
+                    "  a.sVrntIDxx" +
+                    ", a.sVrntName" +
+                    ", a.sDescript" +
+                    ", a.sBrandIDx" + 
+                    ", a.cRecdStat" +
+                    ", a.sModified" +
+                    ", a.dModified" +
+                    ", b.sDescript xBrandNme" +
                 " FROM " + poModel.getTable() + " a" +
                     " LEFT JOIN Brand b ON a.sBrandIDx = b.sBrandIDx";
     }
