@@ -172,15 +172,15 @@ public class Model implements GRecord {
             lsCondition = "cRecdStat = " + SQLUtil.toSQL(psRecdStat);
         }
 
-        String lsSQL = MiscUtil.addCondition(MiscUtil.makeSelect(poModel), " sModelNme LIKE "
+        String lsSQL = MiscUtil.addCondition(MiscUtil.makeSelect(poModel), " sDescript LIKE "
                 + SQLUtil.toSQL(fsValue + "%") + " AND " + lsCondition);
 
         poJSON = ShowDialogFX.Search(poGRider,
                 lsSQL,
                 fsValue,
                 "Code»Name",
-                "sModelIDx»sModelNme",
-                "sModelIDx»sModelNme",
+                "sModelIDx»sDescript",
+                "sModelIDx»sDescript",
                 fbByCode ? 0 : 1);
 
         if (poJSON != null) {
